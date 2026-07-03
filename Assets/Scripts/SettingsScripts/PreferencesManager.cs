@@ -24,11 +24,6 @@ public class PreferencesManager : MonoBehaviour
 
     Resolution[] resolutions;
 
-    void Awake()
-    {
-       screenshotObject = GameObject.Find("Screenshot");
-    }
-
     void Start()
     {
         SetupResolutions();
@@ -122,7 +117,7 @@ public class PreferencesManager : MonoBehaviour
         {
             ui.RefreshUI();
         }
-        screenshotObject.SetActive(true);
+        MainMenu.instance.screenshotObject.SetActive(true);
         controlsPanel.SetActive(false);
     }
 }

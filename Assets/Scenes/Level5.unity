@@ -90396,18 +90396,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1056483789497821713, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1056483789497821713, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1056483789497821713, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1056483789497821713, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 54.5
       objectReference: {fileID: 0}
@@ -90446,18 +90434,6 @@ PrefabInstance:
     - target: {fileID: 1056483789497821713, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2708995175238538754, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
-      propertyPath: m_Center.y
-      value: 2.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 2992326544938927823, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2992326544938927823, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
-      propertyPath: jumpForce
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2992326544938927823, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
       propertyPath: cameraTransform
@@ -152184,8 +152160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c98cd7aedc22f76439c6d788283474d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  lionPrefab: {fileID: 2668931685980598431, guid: e03dc6dc59abb4a4f85b5161b4beec77, type: 3}
-  clownPrefab: {fileID: 2524313551320635773, guid: f693a6ead44956043be5f0083b666c5f, type: 3}
+  enemyPrefabs:
+  - {fileID: 2668931685980598431, guid: e03dc6dc59abb4a4f85b5161b4beec77, type: 3}
+  - {fileID: 2524313551320635773, guid: f693a6ead44956043be5f0083b666c5f, type: 3}
   ballPrefab: {fileID: 1442590093766900426, guid: 336af0932e21e9346b1bec7b4064afaa, type: 3}
   spawnPoints:
   - {fileID: 1233248614}

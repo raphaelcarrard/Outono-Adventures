@@ -6,9 +6,10 @@ public class EnemySpawner : MonoBehaviour
 
     public static EnemySpawner instance;
 
-    [Header("Prefabs")]
-    public GameObject lionPrefab;
-    public GameObject clownPrefab;
+    [Header("Enemy Prefabs")]
+    public GameObject[] enemyPrefabs;
+
+    [Header("Other Prefabs")]
     public GameObject ballPrefab;
 
     [Header("Spawn Points")]
@@ -64,8 +65,12 @@ public class EnemySpawner : MonoBehaviour
         {
             return;
         }
+        if (enemyPrefabs.Length == 0)
+        {
+            return;
+        }
         Transform point = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        GameObject prefab = Random.value < 0.5f ? lionPrefab : clownPrefab;
+        GameObject prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
         Instantiate(prefab, point.position, point.rotation);
     }
 

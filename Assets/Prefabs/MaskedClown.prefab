@@ -2288,7 +2288,7 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: 5c9be0fb183abe549b5fb03058fb5505, type: 3}
   deathSound: {fileID: 8300000, guid: 3d0f245cf74885440bdfb0d52fa74ddc, type: 3}
   speed: 5
-  detectionRange: 100
+  detectionRange: 200
   stopDistance: 1.5
   anim: {fileID: 7799100739229090976}
 --- !u!82 &7099905560617910025

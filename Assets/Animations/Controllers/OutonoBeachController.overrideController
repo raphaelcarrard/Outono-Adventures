@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OutonoBeachController
+  m_Controller: {fileID: 9100000, guid: 70c8cbd5439b2f44bbc59e1532d37aa0, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 764e8baef18265e448a28ab4fcb817b9, type: 2}
+    m_OverrideClip: {fileID: -5252816984213320552, guid: be17f01cfc8297e4ea249765d75bd75a, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: acc17c5e65857ce489613517bf80557c, type: 2}
+    m_OverrideClip: {fileID: -2993534804863918692, guid: be17f01cfc8297e4ea249765d75bd75a, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 4c2d40d440ec3324589a986ddd1d8d3f, type: 2}
+    m_OverrideClip: {fileID: 4507052735457344833, guid: be17f01cfc8297e4ea249765d75bd75a, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 55212d6de5deeef41a7b49d2ca8fc8f8, type: 2}
+    m_OverrideClip: {fileID: -3551865654841311323, guid: be17f01cfc8297e4ea249765d75bd75a, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 6041c93144b540c40a4fe3a5618c41c1, type: 2}
+    m_OverrideClip: {fileID: -6758483313513240000, guid: be17f01cfc8297e4ea249765d75bd75a, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 8ee79e7c1d7f04344aba704df7ccfb48, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 53b98d0c2b242e047aecbb850ba769bf, type: 2}

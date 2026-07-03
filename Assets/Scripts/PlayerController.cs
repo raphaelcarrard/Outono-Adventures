@@ -29,7 +29,12 @@ public class PlayerController : MonoBehaviour
 
     [Header("Life")]
     public int maxHealth = 5;
-    private int currentHealth;
+    public int currentHealth;
+
+    [Header("Ball Settings")]
+    public Transform holdPoint;
+    public float kickForce = 15f;
+    public BallController currentBall;
 
     [Header("Sound Effects")]
     public AudioClip jumpSound;
@@ -52,6 +57,7 @@ public class PlayerController : MonoBehaviour
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += ctx => moveInput = Vector2.zero;
         controls.Player.JumpDoubleJump.performed += ctx => jumpPressed = true;
+        controls.Player.Kick.performed += ctx => KickBall();
         instance = this;
     }
 
@@ -145,6 +151,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void KickBall()
+    {
+        if (currentBall == null)
+        {
+	   return;
+        }
+        anim.SetTrigger("Kick");
+        currentBall.transform.forward = transform.forward;
+        currentBall.Kick(kickForce);
+        currentBall = null;
+    }
+
     void ApplyGravity()
     {
         velocity.y += gravity * Time.deltaTime;
@@ -162,7 +180,6 @@ public class PlayerController : MonoBehaviour
             Die();
         }
     }
-
     void Die()
     {
         isDead = true;
@@ -190,5 +207,28 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (currentBall != null)
+        {
+	   return;
+        }
+        BallController ball = other.GetComponent<BallController>();
+        if (ball == null)
+        {
+           return;
+        }
+        if (ball.isBeingCarried)
+        {
+           return;
+        }
+        if (!ball.CanBePickedUp)
+        {
+           return;
+        }
+        currentBall = ball;
+        ball.PickUp(holdPoint);
     }
 }

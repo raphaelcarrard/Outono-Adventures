@@ -3,12 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    
+    public static MainMenu instance;
+    
     public GameObject mainMenuButtons, optionsPanel, preferencesPanel, controlsPanel, creditsPanel, quitPanel, screenshotObject;
     public string sceneToLoadTheGame, sceneToExitGame;
     public SceneFader fader;
 
     void Awake()
     {
+       instance = this;
        screenshotObject = GameObject.Find("Screenshot");
     }
 

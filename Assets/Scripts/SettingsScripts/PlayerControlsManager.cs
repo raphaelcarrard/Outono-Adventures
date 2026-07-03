@@ -136,6 +136,15 @@ public partial class @PlayerControlsManager: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Kick"",
+                    ""type"": ""Button"",
+                    ""id"": ""d41ede97-3096-441c-806f-d4e2f68bb876"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -237,6 +246,17 @@ public partial class @PlayerControlsManager: IInputActionCollection2, IDisposabl
                     ""action"": ""Screenshot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fbba91ec-c528-47a5-a11e-61cbfa293a21"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Kick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -250,6 +270,7 @@ public partial class @PlayerControlsManager: IInputActionCollection2, IDisposabl
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Screenshot = m_Player.FindAction("Screenshot", throwIfNotFound: true);
+        m_Player_Kick = m_Player.FindAction("Kick", throwIfNotFound: true);
     }
 
     ~@PlayerControlsManager()
@@ -335,6 +356,7 @@ public partial class @PlayerControlsManager: IInputActionCollection2, IDisposabl
     private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Screenshot;
+    private readonly InputAction m_Player_Kick;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -366,6 +388,10 @@ public partial class @PlayerControlsManager: IInputActionCollection2, IDisposabl
         /// Provides access to the underlying input action "Player/Screenshot".
         /// </summary>
         public InputAction @Screenshot => m_Wrapper.m_Player_Screenshot;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Kick".
+        /// </summary>
+        public InputAction @Kick => m_Wrapper.m_Player_Kick;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -407,6 +433,9 @@ public partial class @PlayerControlsManager: IInputActionCollection2, IDisposabl
             @Screenshot.started += instance.OnScreenshot;
             @Screenshot.performed += instance.OnScreenshot;
             @Screenshot.canceled += instance.OnScreenshot;
+            @Kick.started += instance.OnKick;
+            @Kick.performed += instance.OnKick;
+            @Kick.canceled += instance.OnKick;
         }
 
         /// <summary>
@@ -433,6 +462,9 @@ public partial class @PlayerControlsManager: IInputActionCollection2, IDisposabl
             @Screenshot.started -= instance.OnScreenshot;
             @Screenshot.performed -= instance.OnScreenshot;
             @Screenshot.canceled -= instance.OnScreenshot;
+            @Kick.started -= instance.OnKick;
+            @Kick.performed -= instance.OnKick;
+            @Kick.canceled -= instance.OnKick;
         }
 
         /// <summary>
@@ -508,5 +540,12 @@ public partial class @PlayerControlsManager: IInputActionCollection2, IDisposabl
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnScreenshot(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Kick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnKick(InputAction.CallbackContext context);
     }
 }
