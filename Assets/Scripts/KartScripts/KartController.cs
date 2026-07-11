@@ -46,6 +46,7 @@ public class KartController : MonoBehaviour
     private PlayerControlsManager controls;
     private float moveInput;
     private bool isBraking;
+    private bool throwBall;
     private float steerInput;
     public bool isDead;
 
@@ -73,7 +74,7 @@ public class KartController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = new Vector3(0, -0.5f, 0);
-	    currentHealth = maxHealth;
+	currentHealth = maxHealth;
     }
 
     void Update()
@@ -82,6 +83,7 @@ public class KartController : MonoBehaviour
         steerInput = input.x;
         moveInput = input.y;
         isBraking = controls.Player.JumpDoubleJump.IsPressed();
+        throwBall = controls.Player.Kick.IsPressed();
     }
 
 
@@ -100,7 +102,7 @@ public class KartController : MonoBehaviour
 
     void ThrowingBall()
     {
-        if (isBraking && Time.time >= nextThrow)
+        if (throwBall && Time.time >= nextThrow)
         {
             ThrowBall();
             nextThrow = Time.time + interval;

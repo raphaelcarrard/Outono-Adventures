@@ -19,7 +19,7 @@ public class KeyGoalInDeliveryPhase : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (DeliveryManager.instance.money >= 1000)
+            if (DeliveryManager.instance.money >= 500)
             {
                 messageText.text = "Level Complete!";
                 thirdPersonScript.enabled = false;
@@ -31,7 +31,7 @@ public class KeyGoalInDeliveryPhase : MonoBehaviour
             }
             else
             {
-                messageText.text = "You need to make $1000 in money to be able to advance to the next level";
+                messageText.text = "You need to make $500 in money to be able to advance to the next level";
             }
         }
     }

@@ -1,11 +1,13 @@
 using UnityEngine;
 
-public class BallController : MonoBehaviour
+public class BallController : CarryableBall
 {
     private Rigidbody rb;
     private float pickupCooldown;
+    private bool isBeingCarried;
 
-    public bool isBeingCarried { get; private set; }
+    public override bool CanBePickedUp => canBePickedUp;
+    public override bool IsBeingCarried => isBeingCarried;
 
     void Awake()
     {
@@ -20,9 +22,9 @@ public class BallController : MonoBehaviour
         }
     }
 
-    public bool CanBePickedUp => pickupCooldown <= 0f;
+    public bool canBePickedUp => pickupCooldown <= 0f;
 
-    public void PickUp(Transform holdPoint)
+    public override void PickUp(Transform holdPoint)
     {
         isBeingCarried = true;
         rb.isKinematic = true;
@@ -33,12 +35,17 @@ public class BallController : MonoBehaviour
         transform.localRotation = Quaternion.identity;
     }
 
-    public void Kick(float force)
+    public override void Kick(float force)
     {
         isBeingCarried = false;
         pickupCooldown = 0.3f;
         transform.SetParent(null);
         rb.isKinematic = false;
         rb.AddForce(transform.forward * force, ForceMode.Impulse);
+    }
+
+    public override void Drop()
+    {
+        throw new System.NotImplementedException();
     }
 }

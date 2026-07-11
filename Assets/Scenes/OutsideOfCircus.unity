@@ -1158,8 +1158,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2020,6 +2020,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1056483789497821713, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056483789497821713, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056483789497821713, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056483789497821713, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.42629
       objectReference: {fileID: 0}
@@ -2058,6 +2070,14 @@ PrefabInstance:
     - target: {fileID: 1056483789497821713, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2708995175238538754, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
+      propertyPath: m_Center.y
+      value: 2.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992326544938927823, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
+      propertyPath: speed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2992326544938927823, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
       propertyPath: cameraTransform

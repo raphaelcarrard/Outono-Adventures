@@ -2483,7 +2483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimerManager
   player: {fileID: 2143256233}
   playerDead: 0
-  timeRemaining: 150
+  timeRemaining: 60
   timerText: {fileID: 1755305447}
   timeEnabled: 1
 --- !u!1 &278571829

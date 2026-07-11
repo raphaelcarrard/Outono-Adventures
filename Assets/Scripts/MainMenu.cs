@@ -6,8 +6,8 @@ public class MainMenu : MonoBehaviour
     
     public static MainMenu instance;
     
-    public GameObject mainMenuButtons, optionsPanel, preferencesPanel, controlsPanel, creditsPanel, quitPanel, screenshotObject;
-    public string sceneToLoadTheGame, sceneToExitGame;
+    public GameObject continuePanel, mainMenuButtons, optionsPanel, preferencesPanel, controlsPanel, creditsPanel, quitPanel, screenshotObject, insideOfCircusButton;
+    public string sceneToLoadTheGame, sceneToExitGame, sceneToOutsideOfCircus, sceneToInsideOfCircus;
     public SceneFader fader;
 
     void Awake()
@@ -18,8 +18,50 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        if(PlayerPrefs.GetInt("firsttime") == 0)
+        {
+           mainMenuButtons.SetActive(false);
+           fader.FadeToScene(sceneToLoadTheGame);
+           PlayerPrefs.SetInt("firsttime", 1);
+        }
+        else
+        {
+           continuePanel.SetActive(true);
+        }
+        if(PlayerPrefs.GetInt("firsttimeincircus") == 0)
+        {
+           insideOfCircusButton.SetActive(false);
+        }
+        else
+        {
+           insideOfCircusButton.SetActive(true);
+        }
+    }
+
+    public void WatchIntro()
+    {
+        continuePanel.SetActive(false);
         mainMenuButtons.SetActive(false);
         fader.FadeToScene(sceneToLoadTheGame);
+    }
+
+    public void SkipToOutsideOfCircus()
+    {
+        continuePanel.SetActive(false);
+        mainMenuButtons.SetActive(false);
+        fader.FadeToScene(sceneToOutsideOfCircus);
+    }
+
+    public void SkipToInsideOfCircus()
+    {
+        continuePanel.SetActive(false);
+        mainMenuButtons.SetActive(false);
+        fader.FadeToScene(sceneToInsideOfCircus);
+    }
+
+    public void CloseContinuePanel()
+    {
+        continuePanel.SetActive(false);
     }
 
     public void OpenOptions()

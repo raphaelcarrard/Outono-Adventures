@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [Header("Ball Settings")]
     public Transform holdPoint;
     public float kickForce = 15f;
-    public BallController currentBall;
+    public CarryableBall currentBall;
 
     [Header("Sound Effects")]
     public AudioClip jumpSound;
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentBall == null)
         {
-	   return;
+	        return;
         }
         anim.SetTrigger("Kick");
         currentBall.transform.forward = transform.forward;
@@ -213,14 +213,14 @@ public class PlayerController : MonoBehaviour
     {
         if (currentBall != null)
         {
-	   return;
+	       return;
         }
-        BallController ball = other.GetComponent<BallController>();
+        CarryableBall ball = other.GetComponent<CarryableBall>();
         if (ball == null)
         {
            return;
         }
-        if (ball.isBeingCarried)
+        if (ball.IsBeingCarried)
         {
            return;
         }
@@ -230,5 +230,10 @@ public class PlayerController : MonoBehaviour
         }
         currentBall = ball;
         ball.PickUp(holdPoint);
+    }
+
+    public bool IsFalling()
+    {
+        return velocity.y < 0f;
     }
 }

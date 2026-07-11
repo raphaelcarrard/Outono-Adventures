@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using System.Collections;
 using System.IO;
 
 public class ScreenshotFunction : MonoBehaviour
 {
     public static ScreenshotFunction instance;
     public InputActionReference screenshotAction;
+    public GameObject textScreenshotCaptured;
 
     void Awake()
     {
@@ -43,6 +45,15 @@ public class ScreenshotFunction : MonoBehaviour
             string completePath = Path.Combine(imagePath, Application.productName);
             DirectoryInfo folderScreenshot = Directory.CreateDirectory(completePath);
             ScreenCapture.CaptureScreenshot(Path.Combine(folderScreenshot.FullName, "print-" + DateTime.Now.Ticks + ".png"));
+            StartCoroutine(TickEffect());
         }
+    }
+
+    IEnumerator TickEffect()
+    {
+       yield return new WaitForSeconds(0.3f);
+       textScreenshotCaptured.SetActive(true);
+       yield return new WaitForSeconds(0.01f);
+       textScreenshotCaptured.SetActive(false);
     }
 }

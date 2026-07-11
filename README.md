@@ -1,1 +1,0 @@
-a upcoming 3D platform game that's being developed as a birthday gift for a German girl on Instagram that i really like. The game is not complete, a backup was made here on GitHub for security reasons, in case my computer has problems.

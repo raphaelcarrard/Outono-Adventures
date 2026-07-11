@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
   target: {fileID: 1731436519}
-  distance: 1
+  distance: 2
   minDistance: 1
   maxDistance: 3
   sensitivity: 3
@@ -1671,6 +1671,7 @@ Transform:
   - {fileID: 1594050438}
   - {fileID: 397832388}
   - {fileID: 939286182}
+  - {fileID: 1628791946}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &939286181
@@ -2159,6 +2160,77 @@ MonoBehaviour:
   fader: {fileID: 517488165}
   interactAction: {fileID: 2183707372096994419, guid: ac49264fe5db9da4e8fcf4cad0608704, type: 3}
   pm: {fileID: 217948899}
+--- !u!1 &1628791945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1628791946}
+  - component: {fileID: 1628791948}
+  - component: {fileID: 1628791947}
+  m_Layer: 0
+  m_Name: ExitCircus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1628791946
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628791945}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.16, y: 0, z: -5.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 846979601}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1628791947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628791945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb56a472b18ac3845b733c9b0ab3bc69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CircusExit
+  sceneToLoad: OutsideOfCircus
+  circusExitText: {fileID: 405931823}
+  fader: {fileID: 517488165}
+  interactAction: {fileID: 2183707372096994419, guid: ac49264fe5db9da4e8fcf4cad0608704, type: 3}
+  pm: {fileID: 217948899}
+--- !u!65 &1628791948
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628791945}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1541705, y: 1.624557, z: 3.8442574}
+  m_Center: {x: -1.1825216, y: 0.80692506, z: -0.55379295}
 --- !u!1001 &1731436518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2221,11 +2293,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2708995175238538754, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
       propertyPath: m_Center.y
-      value: 2.29
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2992326544938927823, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
       propertyPath: speed
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2992326544938927823, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
       propertyPath: jumpForce

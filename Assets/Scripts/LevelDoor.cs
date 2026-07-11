@@ -36,7 +36,14 @@ public class LevelDoor : MonoBehaviour
             if (IsUnlocked())
             {
                 string key = interactAction.action.GetBindingDisplayString();
-                messageText.text = "Press " + key + " to enter the level " + levelNumber;
+                if(levelNumber == 9)
+                {
+                   messageText.text = "Press " + key + " to enter the boss battle";
+                }
+                else
+                {
+                   messageText.text = "Press " + key + " to enter the level " + levelNumber;
+                }
             }
             else
             {

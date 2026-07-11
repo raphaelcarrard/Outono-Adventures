@@ -228,6 +228,6 @@ MonoBehaviour:
   fader: {fileID: 0}
   thirdPersonScript: {fileID: 0}
   playerController: {fileID: 0}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 5686630597652144583}
   levelMusicSource: {fileID: 0}
-  winSound: {fileID: 0}
+  winSound: {fileID: 8300000, guid: 16e88807e1ea9c74987cd89e125e84d0, type: 3}

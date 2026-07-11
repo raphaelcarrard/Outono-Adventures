@@ -38,6 +38,7 @@ public class CircusEntrance : MonoBehaviour
     {
         if (playerNear && interactAction.action.WasPressedThisFrame() && !pm.isPaused)
         {
+            PlayerPrefs.SetInt("firsttimeincircus", 1);
             fader.FadeToScene(sceneToLoad);
         }
     }

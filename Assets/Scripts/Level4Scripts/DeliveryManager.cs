@@ -49,7 +49,7 @@ public class DeliveryManager : MonoBehaviour
 
     private void Update()
     {
-        if (money >= 1000)
+        if (money >= 500)
         {
             objectiveCompletedText.SetActive(true);
         }
@@ -126,7 +126,7 @@ public class DeliveryManager : MonoBehaviour
 
     private void UpdateMoneyUI()
     {
-        moneyText.text = $"${money}";
+        moneyText.text = $"${money} / 500";
     }
 
     private void UpdateTimerUI()
