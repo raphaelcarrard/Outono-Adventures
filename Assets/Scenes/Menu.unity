@@ -14692,7 +14692,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Kick Ball
 
-    Throw Ball (in Level 5)'
+    Throw Ball (in Level 2)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03618f78961230b46a3620db51e1f136, type: 2}
   m_sharedMaterial: {fileID: 4571019166853933309, guid: 03618f78961230b46a3620db51e1f136, type: 2}

@@ -117,8 +117,8 @@ public class BossCutsceneManager : MonoBehaviour
     {
         Vector2 topStart = topBar.anchoredPosition;
         Vector2 bottomStart = bottomBar.anchoredPosition;
-        Vector2 topEnd = new Vector2(0, 324);
-        Vector2 bottomEnd = new Vector2(0, -324);
+        Vector2 topEnd = new Vector2(0, 460);
+        Vector2 bottomEnd = new Vector2(0, -460);
         float t = 0;
         while(t < 1)
         {
@@ -133,8 +133,8 @@ public class BossCutsceneManager : MonoBehaviour
     {
         Vector2 topStart = topBar.anchoredPosition;
         Vector2 bottomStart = bottomBar.anchoredPosition;
-        Vector2 topEnd = new Vector2(0, 491);
-        Vector2 bottomEnd = new Vector2(0, -475);
+        Vector2 topEnd = new Vector2(0, 1000);
+        Vector2 bottomEnd = new Vector2(0, -1000);
         float t = 0;
         while (t < 1)
         {
