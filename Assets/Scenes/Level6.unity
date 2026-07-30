@@ -783,7 +783,7 @@ GameObject:
   - component: {fileID: 693918534}
   - component: {fileID: 693918539}
   - component: {fileID: 693918538}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -921,11 +921,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
   target: {fileID: 5759662010899466612}
+  mouseSensitivity: 200
+  minVerticalAngle: 25
+  maxVerticalAngle: 60
   distance: 9
   minDistance: 9
   maxDistance: 12
-  sensitivity: 3
   zoomSpeed: 5
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 384
+  sphereRadius: 0.3
+  collisionOffset: 0.2
+  smoothSpeed: 100
 --- !u!1 &723501523
 GameObject:
   m_ObjectHideFlags: 0
@@ -8046,7 +8054,7 @@ GameObject:
   - component: {fileID: 6427766678615664307}
   - component: {fileID: 5285744742621244087}
   - component: {fileID: 8623774272102820337}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Retrovisores
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8427,7 +8435,7 @@ GameObject:
   - component: {fileID: 7344247015680927160}
   - component: {fileID: 7770703925974737473}
   - component: {fileID: 8708519644627038923}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EntradaDeAr2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8461,7 +8469,7 @@ GameObject:
   - component: {fileID: 5582386632445005809}
   - component: {fileID: 5884852086138202675}
   - component: {fileID: 8060547416815440418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PneusTraseiros
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8875,7 +8883,7 @@ GameObject:
   m_Component:
   - component: {fileID: 422881566428197114}
   - component: {fileID: 1050939773229935169}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Level6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8990,7 +8998,7 @@ GameObject:
   - component: {fileID: 4801492097579402540}
   - component: {fileID: 9108654255219910931}
   - component: {fileID: 9108654255219910932}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Robot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9147,7 +9155,7 @@ GameObject:
   - component: {fileID: 3815293504339602972}
   - component: {fileID: 4487586512060920318}
   - component: {fileID: 7150137903816644243}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9165,7 +9173,7 @@ GameObject:
   - component: {fileID: 5679503734904491094}
   - component: {fileID: 7526292815764216267}
   - component: {fileID: 5703902216293837228}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Escapamento
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9231,7 +9239,7 @@ GameObject:
   - component: {fileID: 61904652642609204}
   - component: {fileID: 6501446301150777055}
   - component: {fileID: 5492191648022363297}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Madeiras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9297,7 +9305,7 @@ GameObject:
   - component: {fileID: 4203906760599600275}
   - component: {fileID: 4591554282983038632}
   - component: {fileID: 7871016397111671994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EntradaDeAr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9438,7 +9446,7 @@ GameObject:
   - component: {fileID: 4135953029896228299}
   - component: {fileID: 8712875150226176758}
   - component: {fileID: 8712875150226176759}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpinningTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9472,7 +9480,7 @@ GameObject:
   - component: {fileID: 2668988671380008448}
   - component: {fileID: 1732112916228584676}
   - component: {fileID: 9189197042384801458}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LimpadorFrontalE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9927,7 +9935,7 @@ GameObject:
   - component: {fileID: 5908122887297674605}
   - component: {fileID: 1189957017936477201}
   - component: {fileID: 8111675701338740429}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ParaChoques
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9946,7 +9954,7 @@ GameObject:
   - component: {fileID: 4792494079951280411}
   - component: {fileID: 3637238134787094492}
   - component: {fileID: 4792494079951280412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DollArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9965,7 +9973,7 @@ GameObject:
   - component: {fileID: 1707183318668578753}
   - component: {fileID: 1600624205834690317}
   - component: {fileID: 1900036584629779333}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseballBat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10327,7 +10335,7 @@ GameObject:
   - component: {fileID: 4054695370927026735}
   - component: {fileID: 1479772678207796584}
   - component: {fileID: 1180178179503076883}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bagageiro2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10346,7 +10354,7 @@ GameObject:
   - component: {fileID: 4865581827969883647}
   - component: {fileID: 7022069890248386578}
   - component: {fileID: 7022069890248386579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10516,7 +10524,7 @@ GameObject:
   - component: {fileID: 3082006815412520103}
   - component: {fileID: 5189637549014057712}
   - component: {fileID: 5189637549014057713}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10788,7 +10796,7 @@ GameObject:
   - component: {fileID: 6734677055499624832}
   - component: {fileID: 210771420795867114}
   - component: {fileID: 8709483168222804318}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LimpadorFrontalD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10845,7 +10853,7 @@ GameObject:
   - component: {fileID: 6459055413238218465}
   - component: {fileID: 6118826603049851679}
   - component: {fileID: 3269503145683735276}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Setas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10888,7 +10896,7 @@ GameObject:
   - component: {fileID: 6608645806998075783}
   - component: {fileID: 402097397457732384}
   - component: {fileID: 6612347512407578389}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dollhouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10952,7 +10960,7 @@ GameObject:
   - component: {fileID: 3499455140448802790}
   - component: {fileID: 2839182429875405658}
   - component: {fileID: 8780091650844987949}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RodasTraseiras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11089,7 +11097,7 @@ GameObject:
   - component: {fileID: 550942085993979454}
   - component: {fileID: 5068394091145734405}
   - component: {fileID: 1206903511774710794}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bagageiro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11365,7 +11373,7 @@ GameObject:
   - component: {fileID: 7266246106169911305}
   - component: {fileID: 8543437635545073981}
   - component: {fileID: 8543437635545073982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11402,7 +11410,7 @@ GameObject:
   - component: {fileID: 2818982177110888490}
   - component: {fileID: 6309185694809624754}
   - component: {fileID: 5839720681166956390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bancos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11921,7 +11929,7 @@ GameObject:
   - component: {fileID: 7612387270299893706}
   - component: {fileID: 1480880085792888623}
   - component: {fileID: 7612387270299893707}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Drawer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12130,7 +12138,7 @@ GameObject:
   - component: {fileID: 5530195187226551852}
   - component: {fileID: 2813153258365909112}
   - component: {fileID: 5384335471733335264}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Volante
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12484,7 +12492,7 @@ GameObject:
   - component: {fileID: 3471595410216706824}
   - component: {fileID: 4630896968248237085}
   - component: {fileID: 4368316089591982187}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Acabamentos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13088,7 +13096,7 @@ GameObject:
   - component: {fileID: 6800411946664070927}
   - component: {fileID: 2050132876339483960}
   - component: {fileID: 4070161575794203654}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PainelInterior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13248,7 +13256,7 @@ GameObject:
   - component: {fileID: 2106081251354365120}
   - component: {fileID: 4499890119143165935}
   - component: {fileID: 4614118563413226968}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lanternas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13819,7 +13827,7 @@ GameObject:
   - component: {fileID: 8365524194195130918}
   - component: {fileID: 4787446919673319758}
   - component: {fileID: 9047354371020279386}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "Far\xF3isDeMilha"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14264,7 +14272,7 @@ GameObject:
   - component: {fileID: 5538367906071435372}
   - component: {fileID: 2083696597219447051}
   - component: {fileID: 8244746088712317415}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arches
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14377,7 +14385,7 @@ GameObject:
   - component: {fileID: 5325604237408916937}
   - component: {fileID: 4191060951421090299}
   - component: {fileID: 5702445286166971810}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Firetruck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15249,7 +15257,7 @@ GameObject:
   - component: {fileID: 623494862751133070}
   - component: {fileID: 79696965245786423}
   - component: {fileID: 9174093636564890928}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Train
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16249,7 +16257,7 @@ GameObject:
   - component: {fileID: 3963371452173412336}
   - component: {fileID: 7970991524211157052}
   - component: {fileID: 29442198039202940}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "Ma\xE7anetas"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16607,7 +16615,7 @@ GameObject:
   - component: {fileID: 1884099715303118870}
   - component: {fileID: 8778069466252515778}
   - component: {fileID: 275081276452370737}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "Dobradi\xE7as"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16863,7 +16871,7 @@ GameObject:
   - component: {fileID: 3312498992929991668}
   - component: {fileID: 7207900256484035605}
   - component: {fileID: 6513273891510165646}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "Far\xF3is"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17217,7 +17225,7 @@ GameObject:
   - component: {fileID: 3662631332142803110}
   - component: {fileID: 2253657769852119929}
   - component: {fileID: 6195958574674946546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LimpadorTraseiro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17251,7 +17259,7 @@ GameObject:
   - component: {fileID: 5223560669212119564}
   - component: {fileID: 5751590991754262334}
   - component: {fileID: 4939535128823427569}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RodasFrontais
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18050,7 +18058,7 @@ GameObject:
   - component: {fileID: 4418736812286757748}
   - component: {fileID: 614368774917260788}
   - component: {fileID: 6366316609233659013}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Placas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18153,7 +18161,7 @@ GameObject:
   - component: {fileID: 8147939626707259331}
   - component: {fileID: 5138818663335261514}
   - component: {fileID: 8646992027254505976}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mille
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18627,7 +18635,7 @@ GameObject:
   - component: {fileID: 4351577559507051639}
   - component: {fileID: 2118574611205249316}
   - component: {fileID: 8379339989516036530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PneusFrontais
   m_TagString: Untagged
   m_Icon: {fileID: 0}

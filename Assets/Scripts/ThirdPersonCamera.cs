@@ -2,32 +2,73 @@ using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-
+    [Header("Target")]
     public Transform target;
+
+    [Header("Rotation")]
+    public float mouseSensitivity = 200f;
+    public float minVerticalAngle = -25f;
+    public float maxVerticalAngle = 60f;
 
     [Header("Distance")]
     public float distance = 6f;
     public float minDistance = 2f;
-    public float maxDistance = 12f;
-
-    [Header("Control")]
-    public float sensitivity = 3f;
+    public float maxDistance = 10f;
     public float zoomSpeed = 5f;
 
-    float rotX;
-    float rotY;
+    [Header("Collision")]
+    public LayerMask collisionMask;
+
+    public float sphereRadius = 0.3f;
+    public float collisionOffset = 0.2f;
+    public float smoothSpeed = 10f;
+
+    float yaw;
+    float pitch;
+    float currentDistance;
+
+    void Start()
+    {
+        currentDistance = distance;
+        Vector3 angles = transform.eulerAngles;
+        yaw = angles.y;
+        pitch = angles.x;
+    }
 
     void LateUpdate()
     {
-        rotX += Input.GetAxis("Mouse X") * sensitivity;
-        rotY -= Input.GetAxis("Mouse Y") * sensitivity;
-        rotY = Mathf.Clamp(rotY, -30f, 60f);
+        RotateCamera();
+        Zoom();
+        MoveCamera();
+    }
+
+    void RotateCamera()
+    {
+        yaw += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        pitch = Mathf.Clamp(pitch, minVerticalAngle, maxVerticalAngle);
+    }
+
+    void Zoom()
+    {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        distance -= scroll * zoomSpeed;
-        distance = Mathf.Clamp(distance, minDistance, maxDistance);
-        Quaternion rotation = Quaternion.Euler(rotY, rotX, 0);
-        Vector3 position = target.position - rotation * Vector3.forward * distance;
-        transform.position = position;
-        transform.LookAt(target);
+        currentDistance -= scroll * zoomSpeed;
+        currentDistance = Mathf.Clamp(currentDistance, minDistance, maxDistance);
+    }
+
+    void MoveCamera()
+    {
+        Quaternion rotation = Quaternion.Euler(pitch, yaw, 0);
+        Vector3 desiredPosition = target.position - rotation * Vector3.forward * currentDistance;
+        Vector3 direction = desiredPosition - target.position;
+        float targetDistance = currentDistance;
+        if (Physics.SphereCast(target.position, sphereRadius, direction.normalized, out RaycastHit hit, currentDistance, collisionMask))
+        {
+            targetDistance = hit.distance - collisionOffset;
+            targetDistance = Mathf.Max(targetDistance, minDistance);
+        }
+        Vector3 finalPosition = target.position - rotation * Vector3.forward * targetDistance;
+        transform.position = Vector3.Lerp(transform.position, finalPosition, smoothSpeed * Time.deltaTime);
+        transform.rotation = rotation;
     }
 }

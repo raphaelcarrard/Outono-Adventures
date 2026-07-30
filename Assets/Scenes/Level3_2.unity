@@ -11206,7 +11206,7 @@ GameObject:
   - component: {fileID: 175950408}
   - component: {fileID: 175950407}
   - component: {fileID: 175950410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grids
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42904,7 +42904,7 @@ GameObject:
   - component: {fileID: 693918534}
   - component: {fileID: 693918537}
   - component: {fileID: 693918538}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -42998,11 +42998,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
   target: {fileID: 1423518326}
+  mouseSensitivity: 200
+  minVerticalAngle: 25
+  maxVerticalAngle: 60
   distance: 4
   minDistance: 4
   maxDistance: 7
-  sensitivity: 3
   zoomSpeed: 5
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 384
+  sphereRadius: 0.3
+  collisionOffset: 0.2
+  smoothSpeed: 100
 --- !u!114 &693918538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67668,7 +67676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1104084944}
   - component: {fileID: 1104084945}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoxCollider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96170,7 +96178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1551889194}
   - component: {fileID: 1551889195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoxCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131940,7 +131948,7 @@ GameObject:
   - component: {fileID: 1130502968498587152}
   - component: {fileID: 6355766273160602312}
   - component: {fileID: 6355766273160602313}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131975,7 +131983,7 @@ GameObject:
   - component: {fileID: 9218810015136327720}
   - component: {fileID: 6095817092617062684}
   - component: {fileID: 9218810015136327721}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132228,7 +132236,7 @@ GameObject:
   - component: {fileID: 184111384626559128}
   - component: {fileID: 8346010973810254388}
   - component: {fileID: 8346010973810254389}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132278,7 +132286,7 @@ GameObject:
   - component: {fileID: 7605869695786222742}
   - component: {fileID: 2700928570641791959}
   - component: {fileID: 7605869695786222743}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lamp.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132609,7 +132617,7 @@ GameObject:
   - component: {fileID: 3801333383524524037}
   - component: {fileID: 4483739468987822258}
   - component: {fileID: 2696281630667288311}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132860,7 +132868,7 @@ GameObject:
   - component: {fileID: 6623928797597173417}
   - component: {fileID: 7770468435865129346}
   - component: {fileID: 7770468435865129347}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PhoneCord
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133376,7 +133384,7 @@ GameObject:
   - component: {fileID: 8859640987505930654}
   - component: {fileID: 8763933863862058914}
   - component: {fileID: 8859640987505930655}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133851,7 +133859,7 @@ GameObject:
   - component: {fileID: 2798379513015875535}
   - component: {fileID: 1355290259238919060}
   - component: {fileID: 3373920470564210686}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134202,7 +134210,7 @@ GameObject:
   - component: {fileID: 7733910049694987217}
   - component: {fileID: 2936449674066966922}
   - component: {fileID: 7733910049694987218}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134858,7 +134866,7 @@ GameObject:
   - component: {fileID: 6556244413443327636}
   - component: {fileID: 2908236544546954510}
   - component: {fileID: 7087422157761869086}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135269,7 +135277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2678793267651740639}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Level 3 (Scene 2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135603,7 +135611,7 @@ GameObject:
   - component: {fileID: 5888767853600021394}
   - component: {fileID: 5888767853600021396}
   - component: {fileID: 5888767853600021395}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Telephone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135638,7 +135646,7 @@ GameObject:
   - component: {fileID: 2133440481486695969}
   - component: {fileID: 3865101001177932849}
   - component: {fileID: 8063773411912682372}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135706,7 +135714,7 @@ GameObject:
   - component: {fileID: 5967367851313386581}
   - component: {fileID: 6440813488363005672}
   - component: {fileID: 6440813488363005673}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136281,7 +136289,7 @@ GameObject:
   - component: {fileID: 3891370308787013044}
   - component: {fileID: 1075075639160265095}
   - component: {fileID: 4143784363706425286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Table.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136537,7 +136545,7 @@ GameObject:
   - component: {fileID: 6991871338746100227}
   - component: {fileID: 3511164426172204782}
   - component: {fileID: 7406575989004075009}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136707,7 +136715,7 @@ GameObject:
   - component: {fileID: 3863725184845424703}
   - component: {fileID: 5244758382902572088}
   - component: {fileID: 877596282428444916}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trap2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137362,7 +137370,7 @@ GameObject:
   - component: {fileID: 790399857450158881}
   - component: {fileID: 776988275585456684}
   - component: {fileID: 5519432561715147396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Table.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137507,7 +137515,7 @@ GameObject:
   - component: {fileID: 8239455657996160277}
   - component: {fileID: 4386022799901652687}
   - component: {fileID: 8239455657996160278}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PhoneCordVert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137527,7 +137535,7 @@ GameObject:
   - component: {fileID: 8329300086778716946}
   - component: {fileID: 8329300086778716947}
   - component: {fileID: 8329300086778716948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138090,7 +138098,7 @@ GameObject:
   - component: {fileID: 334126108687149381}
   - component: {fileID: 8020331452941597004}
   - component: {fileID: 8020331452941597005}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138109,7 +138117,7 @@ GameObject:
   - component: {fileID: 6554330351614220846}
   - component: {fileID: 384781753451551012}
   - component: {fileID: 6554330351614220847}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lamp.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138207,7 +138215,7 @@ GameObject:
   - component: {fileID: 2334580157242783021}
   - component: {fileID: 3503337982088631169}
   - component: {fileID: 6343937859304350624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138353,7 +138361,7 @@ GameObject:
   - component: {fileID: 6380161177229365098}
   - component: {fileID: 6380161177229365100}
   - component: {fileID: 6380161177229365099}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138576,7 +138584,7 @@ GameObject:
   - component: {fileID: 8276349700203645513}
   - component: {fileID: 8690135752632916885}
   - component: {fileID: 8690135752632916886}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138839,7 +138847,7 @@ GameObject:
   - component: {fileID: 3749267186784328666}
   - component: {fileID: 1911006046982976504}
   - component: {fileID: 6632026734837321443}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Table.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138975,7 +138983,7 @@ GameObject:
   - component: {fileID: 140494872558760355}
   - component: {fileID: 2119589171274720855}
   - component: {fileID: 6719379609619744206}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139048,7 +139056,7 @@ GameObject:
   - component: {fileID: 5853363760564535176}
   - component: {fileID: 1938714168774242172}
   - component: {fileID: 6748080306622447389}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139105,7 +139113,7 @@ GameObject:
   - component: {fileID: 650986296425466897}
   - component: {fileID: 8272603898451654802}
   - component: {fileID: 8272603898451654803}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Table.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139124,7 +139132,7 @@ GameObject:
   - component: {fileID: 3070685417380695046}
   - component: {fileID: 1129700709305179314}
   - component: {fileID: 6764273280610373590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139165,7 +139173,7 @@ GameObject:
   - component: {fileID: 5692977578389086883}
   - component: {fileID: 5965859773214942092}
   - component: {fileID: 6774821773923501038}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Table.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139351,7 +139359,7 @@ GameObject:
   - component: {fileID: 2610161044338041167}
   - component: {fileID: 7193123711407707893}
   - component: {fileID: 7193123711407707894}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139726,7 +139734,7 @@ GameObject:
   - component: {fileID: 4317201319078343013}
   - component: {fileID: 3327215713835981287}
   - component: {fileID: 7208761204908048311}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139863,7 +139871,7 @@ GameObject:
   - component: {fileID: 5114119030882103284}
   - component: {fileID: 2410638183306197648}
   - component: {fileID: 7365075747554779248}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139981,7 +139989,7 @@ GameObject:
   - component: {fileID: 627138534562498945}
   - component: {fileID: 4470478414961886070}
   - component: {fileID: 7422936456756967040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141443,7 +141451,7 @@ GameObject:
   - component: {fileID: 4095654270577754097}
   - component: {fileID: 3334100755939380226}
   - component: {fileID: 8524246392568987046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Table.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141901,7 +141909,7 @@ GameObject:
   - component: {fileID: 1714296505677285195}
   - component: {fileID: 3091725834828153549}
   - component: {fileID: 8906877133072935324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142179,7 +142187,7 @@ GameObject:
   - component: {fileID: 8830054712940655098}
   - component: {fileID: 3637672068734700831}
   - component: {fileID: 9100089434455634209}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142220,7 +142228,7 @@ GameObject:
   - component: {fileID: 5391124538264044457}
   - component: {fileID: 2205136429306753512}
   - component: {fileID: 9109514036107232131}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}

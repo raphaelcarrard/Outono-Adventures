@@ -150,6 +150,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1890531953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &88947670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 88947671}
+  m_Layer: 0
+  m_Name: camPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &88947671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88947670}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.32, z: -2.96}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1731436519}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &133554351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,7 +1233,7 @@ GameObject:
   - component: {fileID: 693918534}
   - component: {fileID: 693918537}
   - component: {fileID: 693918538}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1295,12 +1326,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e309ebe02705824db0e7872ae6dae47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
-  target: {fileID: 1731436519}
+  target: {fileID: 88947671}
+  mouseSensitivity: 200
+  minVerticalAngle: 25
+  maxVerticalAngle: 60
   distance: 5
   minDistance: 1
   maxDistance: 5
-  sensitivity: 3
   zoomSpeed: 5
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 384
+  sphereRadius: 0.3
+  collisionOffset: 0.2
+  smoothSpeed: 100
 --- !u!114 &693918538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3064,7 +3103,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1056483789497821713, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 88947671}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4783256b4a8d7af4b92aa9b13407bad9, type: 3}
 --- !u!4 &1731436519 stripped
@@ -3516,7 +3558,7 @@ GameObject:
   - component: {fileID: 2069587307}
   - component: {fileID: 2069587309}
   - component: {fileID: 2069587308}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BossFightTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6341,7 +6383,7 @@ GameObject:
   - component: {fileID: 1494631204089816102}
   - component: {fileID: 3699997780222939372}
   - component: {fileID: 3699997780222939373}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: InsideOfCircusBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}

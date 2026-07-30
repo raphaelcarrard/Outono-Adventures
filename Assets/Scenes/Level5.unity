@@ -51163,11 +51163,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
   target: {fileID: 1159908647}
+  mouseSensitivity: 200
+  minVerticalAngle: 25
+  maxVerticalAngle: 60
   distance: 9
   minDistance: 9
   maxDistance: 12
-  sensitivity: 3
   zoomSpeed: 5
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  sphereRadius: 0.3
+  collisionOffset: 0.2
+  smoothSpeed: 100
 --- !u!1 &694732465
 GameObject:
   m_ObjectHideFlags: 0
