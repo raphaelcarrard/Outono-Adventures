@@ -44,6 +44,7 @@ public class PauseManager : MonoBehaviour
     {
         if (!PlayerController.instance.isDead)
         {
+            CursorController.instance.ShowCursor();
             thirdPersonScript.enabled = false;
             playerController.enabled = false;
             pausePanel.SetActive(true);
@@ -56,6 +57,7 @@ public class PauseManager : MonoBehaviour
     {
         if (!PlayerController.instance.isDead)
         {
+            CursorController.instance.HideCursor();
             thirdPersonScript.enabled = true;
             playerController.enabled = true;
             pausePanel.SetActive(false);

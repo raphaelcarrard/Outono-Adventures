@@ -42,6 +42,8 @@ public class TelephoneScript : MonoBehaviour
         if (playerNear && !callAnswered && interactAction.action.WasPressedThisFrame() && !pm.isPaused)
         {
             AnswerPhone();
+            //StartCoroutine(NGIO.UnlockMedal(91499, OnMedalUnlocked));
+            SteamAchievements.instance.UnlockAchievement("telephone");
             messageText.enabled = false;
         }
     }
@@ -96,4 +98,9 @@ public class TelephoneScript : MonoBehaviour
             }
         }
     }
+
+     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     {
+         Debug.Log("Medal Telephone Unlocked!");
+     }*/
 }

@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CountdownManagerBoss
   countdownTimer: 3
+  pauseManagerScript: {fileID: 217948899}
 --- !u!4 &186350868
 Transform:
   m_ObjectHideFlags: 0
@@ -372,10 +373,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 217948898}
+  - component: {fileID: 217948899}
   - component: {fileID: 217948897}
   - component: {fileID: 217948896}
   - component: {fileID: 217948895}
-  - component: {fileID: 217948899}
   - component: {fileID: 217948900}
   m_Layer: 5
   m_Name: Canvas
@@ -489,7 +490,7 @@ MonoBehaviour:
   pausePanel: {fileID: 653670631}
   menuScene: Menu
   pauseAction: {fileID: -3810414869712839790, guid: ac49264fe5db9da4e8fcf4cad0608704, type: 3}
-  thirdPersonScript: {fileID: 693918537}
+  thirdPersonScript: {fileID: 693918539}
   playerController: {fileID: 1731436520}
   isPaused: 0
 --- !u!114 &217948900
@@ -1231,6 +1232,7 @@ GameObject:
   - component: {fileID: 693918536}
   - component: {fileID: 693918535}
   - component: {fileID: 693918534}
+  - component: {fileID: 693918539}
   - component: {fileID: 693918537}
   - component: {fileID: 693918538}
   m_Layer: 7
@@ -1321,7 +1323,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693918533}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e309ebe02705824db0e7872ae6dae47, type: 3}
   m_Name: 
@@ -1384,6 +1386,24 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &693918539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693918533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6096651a1223548814a2a5bed265c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCameraTwo
+  target: {fileID: 88947671}
+  distance: 5
+  minDistance: 1
+  maxDistance: 5
+  sensitivity: 3
+  zoomSpeed: 5
 --- !u!1 &723501523
 GameObject:
   m_ObjectHideFlags: 0
@@ -3593,6 +3613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossFightTrigger
   cutscene: {fileID: 1890531954}
+  pauseManagerScript: {fileID: 217948899}
 --- !u!65 &2069587309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10165,7 +10186,7 @@ MonoBehaviour:
   rotationSpeed: 5
   bigCircusBallPrefab: {fileID: 1442590093766900426, guid: 774c9ff6415f07a4a860bc96fc35fd7e, type: 3}
   smallCircusBallPrefab: {fileID: 1442590093766900426, guid: fe0b40145cc2cbc4c8184b142ae2d5c2, type: 3}
-  chanceSmallBall: 0.1
+  chanceSmallBall: 0.5
   throwPoint: {fileID: 612536499}
   attackCooldown: 3
   stunTime: 5

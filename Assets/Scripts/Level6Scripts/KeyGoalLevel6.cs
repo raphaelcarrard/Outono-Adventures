@@ -30,6 +30,8 @@ public class KeyGoalLevel6 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             messageText.text = "Level Complete!";
+            //StartCoroutine(NGIO.UnlockMedal(91503, OnMedalUnlocked));
+            SteamAchievements.instance.UnlockAchievement("level6");
             playerController.enabled = false;
             levelMusicSource.Stop();
             audioSource.PlayOneShot(winSound);
@@ -37,4 +39,9 @@ public class KeyGoalLevel6 : MonoBehaviour
             fader.FadeToScene(sceneName);
         }
     }
+
+     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     {
+         Debug.Log("Medal Level 6 Unlocked!");
+     }*/
 }

@@ -15,6 +15,8 @@ public class Level7Goal : MonoBehaviour
         if (other.CompareTag("Player"))
         {
            messageText.text = "Level Complete!";
+           //StartCoroutine(NGIO.UnlockMedal(91504, OnMedalUnlocked));
+           SteamAchievements.instance.UnlockAchievement("level7");
            thirdPersonScript.enabled = false;
            playerController.enabled = false;
            levelMusicSource.Stop();
@@ -23,4 +25,9 @@ public class Level7Goal : MonoBehaviour
            fader.FadeToScene(sceneName);
         }
     }
+
+     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     {
+         Debug.Log("Medal Level 7 Unlocked!");
+     }*/
 }

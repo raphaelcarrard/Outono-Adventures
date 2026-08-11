@@ -15,6 +15,10 @@ public class EnemyController : MonoBehaviour
     public float speed = 2f;
     public Transform[] patrolPoints;
     int currentPoint = 0;
+
+    [Header("Damage Cooldown")]
+    public float damageCooldown = 2f;
+    private float damageTimer = 0f;
     
     public AudioClip damageSound;
     public AudioClip deathSound;
@@ -26,13 +30,15 @@ public class EnemyController : MonoBehaviour
         currentLives = maxLives;
         EnemyManager.instance.RegisterEnemy();
     }
-
-    
     void Update()
     {
         if (isDead)
         {
             return;
+        }
+        if(damageTimer > 0f)
+        {
+            damageTimer -= Time.deltaTime;
         }
         Patrol();
     }
@@ -89,20 +95,30 @@ public class EnemyController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (isDead)
+        {
+            return;
+        }
+        if(damageTimer > 0f)
+        {
+            return;
+        }
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {
                 player.TakeDamage(1);
+                damageTimer = damageCooldown;
             }
         }
-	if (collision.gameObject.CompareTag("Kart"))
+	    if (collision.gameObject.CompareTag("Kart"))
         {
             KartController kart = collision.gameObject.GetComponent<KartController>();
             if (kart != null)
             {
                 kart.TakeDamage(1);
+                damageTimer = damageCooldown;
             }
         }
     }

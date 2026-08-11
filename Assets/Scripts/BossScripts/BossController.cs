@@ -134,21 +134,20 @@ public class BossController : MonoBehaviour
     void ThrowBall()
     {
         GameObject ball;
-        float chance = chanceSmallBall;
         if (currentLives <= 10 && currentLives >= 7)
         {
-            chance = 0.1f;
-            Debug.Log("Low Chance");
+            chanceSmallBall = 0.5f;
+            Debug.Log("High Chance");
         }
         else if (currentLives <= 6 && currentLives >= 3)
         {
-            chance = 0.3f;
+            chanceSmallBall = 0.3f;
             Debug.Log("Medium Chance");
         }
         else if(currentLives <= 2)
         {
-            chance = 0.5f;
-            Debug.Log("High Chance");
+            chanceSmallBall = 0.1f;
+            Debug.Log("Low Chance");
         }
         if (Random.value <= chanceSmallBall)
         {

@@ -85,19 +85,11 @@ public class MainMenu : MonoBehaviour
         screenshotObject.SetActive(false);
     }
 
-    public void OpenMinigames()
-    {
-
-    }
-
-    public void CloseMinigames()
-    {
-
-    }
-
     public void AccessTheCredits()
     {
         creditsPanel.SetActive(true);
+        //StartCoroutine(NGIO.UnlockMedal(91493, OnMedalUnlocked));
+        SteamAchievements.instance.UnlockAchievement("credits");
     }
 
     public void CloseTheCredits()
@@ -121,4 +113,9 @@ public class MainMenu : MonoBehaviour
         mainMenuButtons.SetActive(false);
         fader.FadeToScene(sceneToExitGame);
     }
+
+     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     {
+         Debug.Log("Medal Credits Unlocked!");
+     }*/
 }

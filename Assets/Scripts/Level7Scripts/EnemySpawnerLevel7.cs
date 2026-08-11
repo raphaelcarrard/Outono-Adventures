@@ -79,11 +79,19 @@ public class EnemySpawnerLevel7 : MonoBehaviour
             return;
         }
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+        #if UNITY_WEBGL || UNITY_ANDROID
+        if (EnemyManager.instance.enemyCount <= 9)
+        {
+            GameObject enemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+            Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+        }
+        #else
         if (EnemyManager.instance.enemyCount <= 22)
         {
             GameObject enemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
             Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
         }
+        #endif
     }
 
     public bool IsSpawningEnabled()

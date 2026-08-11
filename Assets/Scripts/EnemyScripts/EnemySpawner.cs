@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class EnemySpawner : MonoBehaviour
@@ -19,6 +20,10 @@ public class EnemySpawner : MonoBehaviour
     [Header("Timer")]
     public float timeRemaining = 120f;
     public TextMeshProUGUI timerText;
+
+    [Header("Objective")]
+    public TextMeshProUGUI objectiveText;
+    public InputActionReference kickAction;
 
     public bool spawningEnabled = false;
     public bool canSpawnBall = true;
@@ -41,12 +46,15 @@ public class EnemySpawner : MonoBehaviour
             {
                 spawningEnabled = false;
                 timerText.text = "00:00";
+                objectiveText.text = "Defeat all the enemies";
             }
         }
         if (EnemyManager.instance.enemyCount <= 0 && !IsSpawningEnabled() && canSpawnBall)
         {
             Instantiate(ballPrefab, ballPoint.position, ballPoint.rotation);
             canSpawnBall = false;
+            string key = kickAction.action.GetBindingDisplayString();
+            objectiveText.text = "Pick up the ball on the left side of the field and kick it with the " + key + " key into one of the goals to win the level.";
         }
     }
 

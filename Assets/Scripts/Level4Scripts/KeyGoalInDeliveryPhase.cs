@@ -19,9 +19,11 @@ public class KeyGoalInDeliveryPhase : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (DeliveryManager.instance.money >= 500)
+            if (DeliveryManager.instance.money >= 250)
             {
                 messageText.text = "Level Complete!";
+                //StartCoroutine(NGIO.UnlockMedal(91501, OnMedalUnlocked));
+                SteamAchievements.instance.UnlockAchievement("level4");
                 thirdPersonScript.enabled = false;
                 carController.enabled = false;
                 levelMusicSource.Stop();
@@ -31,7 +33,7 @@ public class KeyGoalInDeliveryPhase : MonoBehaviour
             }
             else
             {
-                messageText.text = "You need to make $500 in money to be able to advance to the next level";
+                messageText.text = "You need to make $250 in money to be able to advance to the next level";
             }
         }
     }
@@ -43,4 +45,9 @@ public class KeyGoalInDeliveryPhase : MonoBehaviour
             messageText.text = "";
         }
     }
+
+     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     {
+         Debug.Log("Medal Level 4 Unlocked!");
+     }*/
 }

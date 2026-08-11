@@ -38,6 +38,8 @@ public class CircusEntrance : MonoBehaviour
     {
         if (playerNear && interactAction.action.WasPressedThisFrame() && !pm.isPaused)
         {
+            //StartCoroutine(NGIO.UnlockMedal(91495, OnMedalUnlocked));
+            SteamAchievements.instance.UnlockAchievement("circusEntrance");
             PlayerPrefs.SetInt("firsttimeincircus", 1);
             fader.FadeToScene(sceneToLoad);
         }
@@ -61,4 +63,9 @@ public class CircusEntrance : MonoBehaviour
             circusEntranceText.text = "";
         }
     }
+
+     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     {
+         Debug.Log("Medal Enter of Circus Unlocked!");
+     }*/
 }

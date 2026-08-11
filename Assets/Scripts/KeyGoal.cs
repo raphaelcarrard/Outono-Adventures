@@ -23,6 +23,8 @@ public class KeyGoal : MonoBehaviour
             if (EnemyManager.instance.enemyCount == 0)
             {
                 messageText.text = "Level Complete!";
+                //StartCoroutine(NGIO.UnlockMedal(91496, OnMedalUnlocked));
+                SteamAchievements.instance.UnlockAchievement("level1");
                 thirdPersonScript.enabled = false;
                 playerController.enabled = false;
                 levelMusicSource.Stop();
@@ -44,4 +46,9 @@ public class KeyGoal : MonoBehaviour
             messageText.text = "";
         }
     }
+
+     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     {
+         Debug.Log("Medal Level 1 Unlocked!");
+     }*/
 }

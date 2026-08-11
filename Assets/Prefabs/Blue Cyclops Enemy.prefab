@@ -1730,10 +1730,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
-  m_Height: 1
+  m_Radius: 1
+  m_Height: 3.969301
   m_Direction: 1
-  m_Center: {x: 0, y: 1.89, z: 0}
+  m_Center: {x: 0, y: 1.8353496, z: 0}
 --- !u!95 &8173886422357333693
 Animator:
   serializedVersion: 7
@@ -1802,6 +1802,7 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
+  damageCooldown: 2
   damageSound: {fileID: 8300000, guid: 5c9be0fb183abe549b5fb03058fb5505, type: 3}
   deathSound: {fileID: 8300000, guid: 3d0f245cf74885440bdfb0d52fa74ddc, type: 3}
 --- !u!82 &1739203294631275458
@@ -2943,7 +2944,7 @@ Transform:
   m_GameObject: {fileID: 5886543377778267489}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.44, y: 3.42, z: 0}
+  m_LocalPosition: {x: -0.43, y: 3.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

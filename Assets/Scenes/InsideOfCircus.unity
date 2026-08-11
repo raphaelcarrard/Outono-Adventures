@@ -806,6 +806,7 @@ GameObject:
   - component: {fileID: 693918535}
   - component: {fileID: 693918534}
   - component: {fileID: 693918537}
+  - component: {fileID: 693918539}
   - component: {fileID: 693918538}
   m_Layer: 7
   m_Name: Main Camera
@@ -832,7 +833,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.16470589, g: 0.9490197, b: 0.9490197, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -902,7 +903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
   target: {fileID: 401383051}
   mouseSensitivity: 200
-  minVerticalAngle: 10
+  minVerticalAngle: -60
   maxVerticalAngle: 60
   distance: 2
   minDistance: 1
@@ -958,6 +959,24 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &693918539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693918533}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6096651a1223548814a2a5bed265c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCameraTwo
+  target: {fileID: 401383051}
+  distance: 2
+  minDistance: 1
+  maxDistance: 3
+  sensitivity: 3
+  zoomSpeed: 5
 --- !u!1 &723501523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,6 +1852,50 @@ MonoBehaviour:
   fader: {fileID: 517488165}
   interactAction: {fileID: 2183707372096994419, guid: ac49264fe5db9da4e8fcf4cad0608704, type: 3}
   pm: {fileID: 217948899}
+--- !u!1 &951516963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 951516965}
+  - component: {fileID: 951516964}
+  m_Layer: 0
+  m_Name: CursorController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &951516964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951516963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202266014f83d80498ad473e36c32e27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorController
+--- !u!4 &951516965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951516963}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1110327080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,3 +2722,4 @@ SceneRoots:
   - {fileID: 217948898}
   - {fileID: 836254206}
   - {fileID: 846979601}
+  - {fileID: 951516965}

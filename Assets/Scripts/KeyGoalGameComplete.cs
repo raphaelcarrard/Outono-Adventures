@@ -22,6 +22,8 @@ public class KeyGoalGameComplete : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            //StartCoroutine(NGIO.UnlockMedal(91506, OnMedalUnlocked));
+            SteamAchievements.instance.UnlockAchievement("level9");
             thirdPersonScript.enabled = false;
             playerController.enabled = false;
             levelMusicSource.Stop();
@@ -29,4 +31,9 @@ public class KeyGoalGameComplete : MonoBehaviour
             fader.FadeToScene(sceneName);
         }
     }
+
+     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     {
+         Debug.Log("Medal Level 9 Unlocked!");
+     }*/
 }

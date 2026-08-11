@@ -8,6 +8,7 @@ public class CountdownManagerBoss : MonoBehaviour
 
     [Header("Config")]
     public float countdownTimer = 3f;
+    public MonoBehaviour pauseManagerScript;
 
     public bool CanMove { get; private set; }
 
@@ -31,5 +32,7 @@ public class CountdownManagerBoss : MonoBehaviour
             timer--;
         }
         CanMove = true;
+        CursorController.instance.HideCursor();
+        pauseManagerScript.enabled = true;
     }
 }

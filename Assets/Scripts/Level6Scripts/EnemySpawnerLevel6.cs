@@ -14,6 +14,9 @@ public class EnemySpawnerLevel6 : MonoBehaviour
     public float timeRemaining = 120f;
     public TextMeshProUGUI timerText;
 
+    [Header("Objective")]
+    public TextMeshProUGUI objectiveText;
+
     public bool spawningEnabled = true;
     public bool canSpawnKey = true;
 
@@ -38,12 +41,14 @@ public class EnemySpawnerLevel6 : MonoBehaviour
                 spawningEnabled = false;
                 timerText.text = "00:00";
                 CancelInvoke(nameof(Spawn));
+                objectiveText.text = "Defeat all the enemies";
             }
         }
         if (EnemyManager.instance.enemyCount <= 0 && !IsSpawningEnabled() && canSpawnKey)
         {
             Instantiate(keyGoalPrefab, keyPoint.position, keyPoint.rotation);
             canSpawnKey = false;
+            objectiveText.text = "Grab the key near the orange pawn to beat the level.";
         }
     }
 
@@ -55,10 +60,17 @@ public class EnemySpawnerLevel6 : MonoBehaviour
             return;
         }
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+        #if UNITY_WEBGL || UNITY_ANDROID
+        if(EnemyManager.instance.enemyCount <= 9)
+        {
+            Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+        }
+        #else
         if(EnemyManager.instance.enemyCount <= 22)
         {
             Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
         }
+        #endif
     }
 
     public bool IsSpawningEnabled()

@@ -24,6 +24,8 @@ public class GoalTriggerLevel8 : MonoBehaviour
              TimerManager.instance.timeEnabled = false;
              winGame = true;
              messageText.text = "Level Complete!";
+             //StartCoroutine(NGIO.UnlockMedal(91505, OnMedalUnlocked));
+             SteamAchievements.instance.UnlockAchievement("level8");
              thirdPersonScript.enabled = false;
              playerController.enabled = false;
              levelMusic.Stop();
@@ -32,4 +34,9 @@ public class GoalTriggerLevel8 : MonoBehaviour
              fader.FadeToScene(sceneName);
         }
     }
+
+     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     {
+         Debug.Log("Medal Level 8 Unlocked!");
+     }*/
 }

@@ -385,7 +385,6 @@ GameObject:
   - component: {fileID: 217948897}
   - component: {fileID: 217948896}
   - component: {fileID: 217948895}
-  - component: {fileID: 217948900}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -481,21 +480,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &217948900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217948894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ed6f51e19fde6b4f9a338f1f73124b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HUDManager
-  player: {fileID: 1731436520}
-  livesText: {fileID: 422075709}
-  enemyText: {fileID: 1927973933}
 --- !u!1 &405931821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,6 +1097,7 @@ GameObject:
   - component: {fileID: 693918536}
   - component: {fileID: 693918535}
   - component: {fileID: 693918534}
+  - component: {fileID: 693918539}
   - component: {fileID: 693918537}
   - component: {fileID: 693918538}
   m_Layer: 7
@@ -1203,7 +1188,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693918533}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e309ebe02705824db0e7872ae6dae47, type: 3}
   m_Name: 
@@ -1266,6 +1251,24 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &693918539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693918533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6096651a1223548814a2a5bed265c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCameraTwo
+  target: {fileID: 1423518326}
+  distance: 5
+  minDistance: 1
+  maxDistance: 10
+  sensitivity: 3
+  zoomSpeed: 5
 --- !u!1 &723501523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,7 +1862,7 @@ MonoBehaviour:
   pausePanel: {fileID: 653670631}
   menuScene: Menu
   pauseAction: {fileID: -3810414869712839790, guid: ac49264fe5db9da4e8fcf4cad0608704, type: 3}
-  thirdPersonScript: {fileID: 693918537}
+  thirdPersonScript: {fileID: 693918539}
   playerController: {fileID: 1731436520}
   isPaused: 0
 --- !u!4 &927050754
@@ -2428,51 +2431,6 @@ RectTransform:
   m_AnchoredPosition: {x: 960, y: -403}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1192943159
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1192943161}
-  - component: {fileID: 1192943160}
-  m_Layer: 0
-  m_Name: EnemyManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1192943160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192943159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f7922314b40f04c90dad2725a12f36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
-  enemyCount: 0
---- !u!4 &1192943161
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192943159}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1251290608
 GameObject:
   m_ObjectHideFlags: 0
@@ -3367,7 +3325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1685565230
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4172,12 +4130,12 @@ GameObject:
   - component: {fileID: 1927973934}
   - component: {fileID: 1927973933}
   m_Layer: 5
-  m_Name: EnemyCountText
+  m_Name: ObjectiveText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1927973933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4198,7 +4156,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Enemies: 10'
+  m_text: 'Objective: Go to house number 666 on the right (follow the lampposts and
+    look at the gray ground to get there).'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03618f78961230b46a3620db51e1f136, type: 2}
   m_sharedMaterial: {fileID: 4571019166853933309, guid: 03618f78961230b46a3620db51e1f136, type: 2}
@@ -4225,8 +4184,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -359228,7 +359187,8 @@ MonoBehaviour:
   interactAction: {fileID: 2183707372096994419, guid: ac49264fe5db9da4e8fcf4cad0608704, type: 3}
   pm: {fileID: 927050753}
   messageImage: {fileID: 446281767}
-  thirdPersonScript: {fileID: 693918537}
+  objectiveText: {fileID: 1927973932}
+  thirdPersonScript: {fileID: 693918539}
   playerController: {fileID: 1731436520}
   pauseManager: {fileID: 927050753}
 --- !u!65 &7372029079162918345
@@ -450306,6 +450266,5 @@ SceneRoots:
   - {fileID: 1279596682}
   - {fileID: 1858026240}
   - {fileID: 3153155674364147773}
-  - {fileID: 1192943161}
   - {fileID: 927050754}
   - {fileID: 1430700737}

@@ -7,7 +7,7 @@ public class ReadMessageScript : MonoBehaviour
     public TextMeshProUGUI messageText;
     public InputActionReference interactAction;
     public PauseManager pm;
-    public GameObject messageImage;
+    public GameObject messageImage, objectiveText;
     public MonoBehaviour thirdPersonScript, playerController, pauseManager;
 
     private bool playerNear = false;
@@ -35,7 +35,10 @@ public class ReadMessageScript : MonoBehaviour
     {
         if (playerNear && interactAction.action.WasPressedThisFrame() && !pm.isPaused)
         {
+            CursorController.instance.ShowCursor();
             messageImage.SetActive(true);
+            //StartCoroutine(NGIO.UnlockMedal(91498, OnMedalUnlocked));
+            SteamAchievements.instance.UnlockAchievement("readMessage");
             thirdPersonScript.enabled = false;
             playerController.enabled = false;
 	    pauseManager.enabled = false;
@@ -64,10 +67,17 @@ public class ReadMessageScript : MonoBehaviour
 
     public void CloseMessage()
     {
+        CursorController.instance.HideCursor();
         messageImage.SetActive(false);
         thirdPersonScript.enabled = true;
         playerController.enabled = true;
         pauseManager.enabled = true;
 	messageText.enabled = true;
+        objectiveText.SetActive(true);
     }
+
+     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     {
+         Debug.Log("Medal Read Message Unlocked!");
+     }*/
 }

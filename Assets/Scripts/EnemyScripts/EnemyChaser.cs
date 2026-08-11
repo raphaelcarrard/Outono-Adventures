@@ -20,6 +20,10 @@ public class EnemyChaser : MonoBehaviour
     public float detectionRange = 10f;
     public float stopDistance = 1.5f;
 
+    [Header("Damage Cooldown")]
+    public float damageCooldown = 2f;
+    private float damageTimer = 0f;
+
     [Header("Components")]
     public Animator anim;
 
@@ -44,6 +48,10 @@ public class EnemyChaser : MonoBehaviour
             if (isDead)
             {
                 return;
+            }
+            if (damageTimer > 0f)
+            {
+                damageTimer -= Time.deltaTime;
             }
             float distance = Vector3.Distance(transform.position, player.position);
             if (distance > detectionRange)
@@ -70,6 +78,10 @@ public class EnemyChaser : MonoBehaviour
             {
                 return;
             }
+            if (damageTimer > 0f)
+            {
+                damageTimer -= Time.deltaTime;
+            }
             float distance = Vector3.Distance(transform.position, player.position);
             if (distance > detectionRange)
             {
@@ -93,12 +105,21 @@ public class EnemyChaser : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (isDead)
+        {
+            return;
+        }
+        if (damageTimer > 0f)
+        {
+            return;
+        }
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             if (player != null && !player.isDead)
             {
                 player.TakeDamage(1);
+                damageTimer = damageCooldown;
             }
         }
     }

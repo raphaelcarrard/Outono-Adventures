@@ -31,6 +31,8 @@ public class KeyGoalInKartPhase : MonoBehaviour
             if (EnemyManager.instance.enemyCount == 0)
             {
                 messageText.text = "Level Complete!";
+                //StartCoroutine(NGIO.UnlockMedal(91497, OnMedalUnlocked));
+                SteamAchievements.instance.UnlockAchievement("level2");
                 kartController.enabled = false;
                 levelMusicSource.Stop();
                 audioSource.PlayOneShot(winSound);
@@ -51,4 +53,9 @@ public class KeyGoalInKartPhase : MonoBehaviour
             messageText.text = "";
         }
     }
+
+     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     {
+         Debug.Log("Medal Level 2 Unlocked!");
+     }*/
 }

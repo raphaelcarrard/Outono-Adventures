@@ -43,7 +43,8 @@ public class PauseManagerForLevel4 : MonoBehaviour
     {
         if (!CarController.instance.isDead)
         {
-	   carController.enabled = false;
+           CursorController.instance.ShowCursor();
+           carController.enabled = false;
            thirdPersonScript.enabled = false;
            pausePanel.SetActive(true);
            Time.timeScale = 0f;
@@ -55,7 +56,8 @@ public class PauseManagerForLevel4 : MonoBehaviour
     {
         if (!CarController.instance.isDead)
         {
-	   carController.enabled = true;
+           CursorController.instance.HideCursor();
+           carController.enabled = true;
            thirdPersonScript.enabled = true;
            pausePanel.SetActive(false);
            Time.timeScale = 1f;

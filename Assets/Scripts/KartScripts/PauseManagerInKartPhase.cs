@@ -44,7 +44,8 @@ public class PauseManagerInKartPhase : MonoBehaviour
     {
         if(!KartController.instance.isDead)
         {
-	   kartController.enabled = false;
+           CursorController.instance.ShowCursor();
+           kartController.enabled = false;
            thirdPersonScript.enabled = false;
            pausePanel.SetActive(true);
            Time.timeScale = 0f;
@@ -56,7 +57,8 @@ public class PauseManagerInKartPhase : MonoBehaviour
     {
         if(!KartController.instance.isDead)
         {
-	   kartController.enabled = true;
+           CursorController.instance.HideCursor();
+           kartController.enabled = true;
            thirdPersonScript.enabled = true;
            pausePanel.SetActive(false);
            Time.timeScale = 1f;
