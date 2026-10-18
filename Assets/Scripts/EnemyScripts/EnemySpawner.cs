@@ -27,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
 
     public bool spawningEnabled = false;
     public bool canSpawnBall = true;
+    public int bindingIndex;
 
     void Awake()
     {
@@ -53,8 +54,15 @@ public class EnemySpawner : MonoBehaviour
         {
             Instantiate(ballPrefab, ballPoint.position, ballPoint.rotation);
             canSpawnBall = false;
-            string key = kickAction.action.GetBindingDisplayString();
-            objectiveText.text = "Pick up the ball on the left side of the field and kick it with the " + key + " key into one of the goals to win the level.";
+            string key = kickAction.action.GetBindingDisplayString(bindingIndex);
+            if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+            {
+                objectiveText.text = "Pick up the ball on the left side of the field and kick it with the Kick button into one of the goals to win the level.";
+            }
+            else if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+            {
+                objectiveText.text = "Pick up the ball on the left side of the field and kick it with the " + key + " key into one of the goals to win the level.";
+            }
         }
     }
 

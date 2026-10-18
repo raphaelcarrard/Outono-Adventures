@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -9,6 +10,8 @@ public class DoorToScene2AutoEntrance : MonoBehaviour
     public SceneFader fader;
     public InputActionReference interactAction;
     public PauseManager pm;
+    public GameObject virtualControls;
+    public Button enterTheDoorButton;
 
     private bool playerNear = false;
 
@@ -30,6 +33,7 @@ public class DoorToScene2AutoEntrance : MonoBehaviour
     {
         fader = FindObjectOfType<SceneFader>();
         doorEntranceText.text = "";
+        enterTheDoorButton.gameObject.SetActive(false);
     }
 
     void Update()
@@ -40,13 +44,26 @@ public class DoorToScene2AutoEntrance : MonoBehaviour
         }
     }
 
+    public void EnterTheDoor()
+    {
+        virtualControls.SetActive(false);
+        fader.FadeToScene(sceneToLoad);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerNear = true;
             string key = interactAction.action.GetBindingDisplayString();
-            doorEntranceText.text = "Press " + key + " to enter the door.";
+            if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+            {
+                doorEntranceText.text = "Press " + key + " to enter the door.";
+            }
+            else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+            {
+                enterTheDoorButton.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -55,7 +72,14 @@ public class DoorToScene2AutoEntrance : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNear = false;
-            doorEntranceText.text = "";
+            if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+            {
+                doorEntranceText.text = "";
+            }
+            else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+            {
+                enterTheDoorButton.gameObject.SetActive(false);
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ public class KeyGoalInDeliveryPhase : MonoBehaviour
     public MonoBehaviour thirdPersonScript, carController;
     public AudioSource audioSource, levelMusicSource;
     public AudioClip winSound;
+    public GameObject virtualControls;
 
     void Update()
     {
@@ -21,9 +22,13 @@ public class KeyGoalInDeliveryPhase : MonoBehaviour
         {
             if (DeliveryManager.instance.money >= 250)
             {
+                virtualControls.SetActive(false);
                 messageText.text = "Level Complete!";
-                //StartCoroutine(NGIO.UnlockMedal(91501, OnMedalUnlocked));
-                SteamAchievements.instance.UnlockAchievement("level4");
+                StartCoroutine(NGIO.UnlockMedal(91501, OnMedalUnlocked));
+                //SteamAchievements.instance.UnlockAchievement("level4");
+                #if UNITY_ANDROID
+                GooglePlayGamesManager.instance.CheckAchievements();
+                #endif
                 thirdPersonScript.enabled = false;
                 carController.enabled = false;
                 levelMusicSource.Stop();
@@ -46,8 +51,8 @@ public class KeyGoalInDeliveryPhase : MonoBehaviour
         }
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Level 4 Unlocked!");
-     }*/
+     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 public class DeliveryPoint : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class DeliveryPoint : MonoBehaviour
     public PauseManagerForLevel4 pm;
     public GameObject pickupPoint;
     public CarController player;
+    public Button completeDeliveryButton;
 
     [HideInInspector]
     public bool isActiveDelivery = false;
@@ -40,6 +42,8 @@ public class DeliveryPoint : MonoBehaviour
     {
         messageText.text = "";
         gameObject.SetActive(false);
+        completeDeliveryButton.gameObject.SetActive(false);
+        completeDeliveryButton.onClick.AddListener(CompleteDelivery);
     }
 
     void Update()
@@ -56,6 +60,16 @@ public class DeliveryPoint : MonoBehaviour
         }
     }
 
+    public void CompleteDelivery()
+    {
+        if (!player.isDead && !pm.isPaused)
+        {
+            DeliveryManager.instance.CompleteDelivery(this);
+            pickupPoint.SetActive(true);
+            completeDeliveryButton.gameObject.SetActive(false);
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (!isActiveDelivery)
@@ -68,7 +82,14 @@ public class DeliveryPoint : MonoBehaviour
         }
         playerNear = true;
         string key = inputActions.Player.Interaction.GetBindingDisplayString();
-        messageText.text = "Press " + key + " to complete the delivery.";
+        if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+        {
+            messageText.text = "Press " + key + " to complete the delivery.";
+        }
+        else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+        {
+            completeDeliveryButton.gameObject.SetActive(true);
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -78,6 +99,13 @@ public class DeliveryPoint : MonoBehaviour
             return;
         }
         playerNear = false;
-        messageText.text = "";
+        if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+        {
+            messageText.text = "";
+        }
+        else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+        {
+            completeDeliveryButton.gameObject.SetActive(false);
+        }
     }
 }

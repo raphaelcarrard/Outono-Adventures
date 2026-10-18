@@ -26,8 +26,8 @@ public class InitialScreen : MonoBehaviour
         if(!gameStarted && (Input.anyKeyDown || Input.GetMouseButtonDown(0)))
         {
             gameStarted = true;
-            //StartCoroutine(NGIO.UnlockMedal(91492, OnMedalUnlocked));
-            SteamAchievements.instance.UnlockAchievement("startGame");
+            StartCoroutine(NGIO.UnlockMedal(91492, OnMedalUnlocked));
+            //SteamAchievements.instance.UnlockAchievement("startGame");
             StopAllCoroutines();
             StartCoroutine(StartGame());
         }
@@ -49,8 +49,8 @@ public class InitialScreen : MonoBehaviour
         fader.FadeToScene(sceneToLoad);
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Start Screen Unlocked!");
-     }*/
+     }
 }

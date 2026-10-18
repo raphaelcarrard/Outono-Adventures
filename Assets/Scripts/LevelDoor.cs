@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using TMPro;
@@ -12,6 +13,10 @@ public class LevelDoor : MonoBehaviour
     public SceneFader fader;
     public InputActionReference interactAction;
     public PauseManager pm;
+    public Button actionButton;
+    public TextMeshProUGUI buttonText;
+    public GameObject virtualButtons;
+
     bool playerNear;
 
     void OnEnable()
@@ -28,6 +33,11 @@ public class LevelDoor : MonoBehaviour
         interactAction.action.Disable();
     }
 
+    void Start()
+    {
+        actionButton.gameObject.SetActive(false);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -38,11 +48,29 @@ public class LevelDoor : MonoBehaviour
                 string key = interactAction.action.GetBindingDisplayString();
                 if(levelNumber == 9)
                 {
-                   messageText.text = "Press " + key + " to enter the boss battle";
+                    if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+                    {
+                        messageText.text = "Press " + key + " to enter the boss battle";
+                    }
+                    else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+                    {
+                        actionButton.gameObject.SetActive(true);
+                        buttonText.text = "Enter the boss battle";
+                        actionButton.GetComponent<Image>().color = Color.red;
+                    }
                 }
                 else
                 {
-                   messageText.text = "Press " + key + " to enter the level " + levelNumber;
+                    if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+                    {
+                        messageText.text = "Press " + key + " to enter the level " + levelNumber;
+                    }
+                    else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+                    {
+                        actionButton.gameObject.SetActive(true);
+                        buttonText.text = "Enter the level " + levelNumber;
+                        actionButton.GetComponent<Image>().color = Color.green;
+                    }
                 }
             }
             else
@@ -59,6 +87,19 @@ public class LevelDoor : MonoBehaviour
         {
             playerNear = false;
             messageText.text = "";
+            actionButton.gameObject.SetActive(false);
+        }
+    }
+
+    public void EnterTheLevel()
+    {
+        if (IsUnlocked())
+        {
+            fader.FadeToScene(sceneName);
+            if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+            {
+                virtualButtons.SetActive(false);
+            }
         }
     }
 

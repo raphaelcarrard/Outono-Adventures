@@ -6,9 +6,12 @@ public class PauseManagerLevel6 : MonoBehaviour
 {
 
     public GameObject pausePanel;
+    public GameObject virtualControls;
     public string menuScene;
     public InputActionReference pauseAction;
-    public MonoBehaviour thirdPersonScript, playerController;
+    public ThirdPersonCameraTwo thirdPersonScript;
+    public CameraFollow cameraFollow;
+    public MonoBehaviour playerController;
     public bool isPaused = false;
 
     void OnEnable()
@@ -45,7 +48,15 @@ public class PauseManagerLevel6 : MonoBehaviour
         if (!PlayerControllerLevel6.instance.isDead)
         {
             CursorController.instance.ShowCursor();
-            thirdPersonScript.enabled = false;
+            if (PlayerPrefs.GetInt("CameraMode") == 0)
+            {
+                thirdPersonScript.enabled = false;
+            }
+            else if (PlayerPrefs.GetInt("CameraMode") == 1)
+            {
+                cameraFollow.enabled = false;
+            }
+            virtualControls.SetActive(false);
             playerController.enabled = false;
             pausePanel.SetActive(true);
             Time.timeScale = 0f;
@@ -58,7 +69,15 @@ public class PauseManagerLevel6 : MonoBehaviour
         if (!PlayerControllerLevel6.instance.isDead)
         {
             CursorController.instance.HideCursor();
-            thirdPersonScript.enabled = true;
+            if (PlayerPrefs.GetInt("CameraMode") == 0)
+            {
+                thirdPersonScript.enabled = true;
+            }
+            else if (PlayerPrefs.GetInt("CameraMode") == 1)
+            {
+                cameraFollow.enabled = true;
+            }
+            virtualControls.SetActive(true);
             playerController.enabled = true;
             pausePanel.SetActive(false);
             Time.timeScale = 1f;

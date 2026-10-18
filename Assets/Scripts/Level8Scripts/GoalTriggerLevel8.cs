@@ -11,6 +11,7 @@ public class GoalTriggerLevel8 : MonoBehaviour
     public MonoBehaviour thirdPersonScript, playerController;
     public AudioSource audioSource, levelMusic;
     public AudioClip winSound;
+    public GameObject virtualButtons;
 
     void Awake()
     {
@@ -21,11 +22,15 @@ public class GoalTriggerLevel8 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+             virtualButtons.SetActive(false);
              TimerManager.instance.timeEnabled = false;
              winGame = true;
              messageText.text = "Level Complete!";
-             //StartCoroutine(NGIO.UnlockMedal(91505, OnMedalUnlocked));
-             SteamAchievements.instance.UnlockAchievement("level8");
+             StartCoroutine(NGIO.UnlockMedal(91505, OnMedalUnlocked));
+             //SteamAchievements.instance.UnlockAchievement("level8");
+             #if UNITY_ANDROID
+             GooglePlayGamesManager.instance.CheckAchievements();
+             #endif
              thirdPersonScript.enabled = false;
              playerController.enabled = false;
              levelMusic.Stop();
@@ -35,8 +40,8 @@ public class GoalTriggerLevel8 : MonoBehaviour
         }
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Level 8 Unlocked!");
-     }*/
+     }
 }

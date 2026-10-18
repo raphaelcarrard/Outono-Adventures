@@ -15,19 +15,30 @@ public class PreferencesManager : MonoBehaviour
     [Header("Display")]
     public Toggle fullscreenToggle;
     public Toggle FPSToggle;
+    public Toggle VirtualJoystickToggle;
 
     [Header("Dropdowns")]
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
+    public TMP_Dropdown cameraModeDropdown;
 
     public GameObject PreferencesPanel, controlsPanel, screenshotObject;
 
     Resolution[] resolutions;
 
+    private const string CameraModeKey = "CameraMode";
+
     void Start()
     {
+        #if (UNITY_WEBGL)
+        resolutionDropdown.gameObject.SetActive(false);
+        #elif (UNITY_ANDROID)
+        resolutionDropdown.gameObject.SetActive(false);
+        fullscreenToggle.gameObject.SetActive(false);
+        #endif
         SetupResolutions();
         SetupQuality();
+        SetupCameraModes();
         LoadSettings();
     }
 
@@ -48,6 +59,23 @@ public class PreferencesManager : MonoBehaviour
     {
         qualityDropdown.ClearOptions();
         qualityDropdown.AddOptions(new List<string>(QualitySettings.names));
+    }
+
+    void SetupCameraModes()
+    {
+        cameraModeDropdown.ClearOptions();
+        cameraModeDropdown.AddOptions(new List<string>
+        {
+            "Controlled by the mouse",
+            "Follow player"
+        });
+    }
+
+    public void SetCameraMode(int mode)
+    {
+        mode = Mathf.Clamp(mode, 0, 1);
+        PlayerPrefs.SetInt(CameraModeKey, mode);
+        PlayerPrefs.Save();
     }
 
     public void SetMusicVolume(float volume)
@@ -86,6 +114,11 @@ public class PreferencesManager : MonoBehaviour
         PlayerPrefs.SetInt("ShowFPS", enabled ? 1 : 0);
     }
 
+    public void SetVirtualControls(bool enabled)
+    {
+        PlayerPrefs.SetInt("ShowVirtualControls", enabled ? 1 : 0);
+    }
+
     void LoadSettings()
     {
         float music = PlayerPrefs.GetFloat("MusicVolume", 1f);
@@ -99,10 +132,24 @@ public class PreferencesManager : MonoBehaviour
         Screen.fullScreen = fullscreen;
         bool showFPS = PlayerPrefs.GetInt("ShowFPS", 0) == 1;
         FPSToggle.isOn = showFPS;
+        #if (UNITY_ANDROID)
+        bool showVirtualControls = PlayerPrefs.GetInt("ShowVirtualControls", 1) == 1;
+        #else
+        bool showVirtualControls = PlayerPrefs.GetInt("ShowVirtualControls", 0) == 1;
+        #endif
+        VirtualJoystickToggle.isOn = showVirtualControls;
         int quality = PlayerPrefs.GetInt("Quality", QualitySettings.GetQualityLevel());
         qualityDropdown.value = quality;
         int resolution = PlayerPrefs.GetInt("Resolution", 0);
         resolutionDropdown.value = resolution;
+        #if (UNITY_ANDROID)
+        int cameraMode = PlayerPrefs.GetInt(CameraModeKey, 1);
+        #else
+        int cameraMode = PlayerPrefs.GetInt(CameraModeKey, 0);
+        #endif
+        cameraMode = Mathf.Clamp(cameraMode, 0, 1);
+        cameraModeDropdown.value = cameraMode;
+        SetCameraMode(cameraMode);
     }
 
     public void ClosePanel()

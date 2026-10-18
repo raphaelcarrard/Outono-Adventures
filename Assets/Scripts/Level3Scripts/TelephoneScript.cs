@@ -1,6 +1,8 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
+
 public class TelephoneScript : MonoBehaviour
 {
     [Header("Audios")]
@@ -11,6 +13,7 @@ public class TelephoneScript : MonoBehaviour
     public TextMeshProUGUI messageText;
     public InputActionReference interactAction;
     public PauseManager pm;
+    public Button answerTelephoneButton;
 
     private AudioSource audioSource;
     private bool playerNear = false;
@@ -35,6 +38,7 @@ public class TelephoneScript : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         StartRinging();
         messageText.text = "";
+        answerTelephoneButton.gameObject.SetActive(false);
     }
 
     void Update()
@@ -42,8 +46,8 @@ public class TelephoneScript : MonoBehaviour
         if (playerNear && !callAnswered && interactAction.action.WasPressedThisFrame() && !pm.isPaused)
         {
             AnswerPhone();
-            //StartCoroutine(NGIO.UnlockMedal(91499, OnMedalUnlocked));
-            SteamAchievements.instance.UnlockAchievement("telephone");
+            StartCoroutine(NGIO.UnlockMedal(91499, OnMedalUnlocked));
+            //SteamAchievements.instance.UnlockAchievement("telephone");
             messageText.enabled = false;
         }
     }
@@ -55,13 +59,19 @@ public class TelephoneScript : MonoBehaviour
         audioSource.Play();
     }
 
-    void AnswerPhone()
+    public void AnswerPhone()
     {
         callAnswered = true;
         audioSource.Stop();
         audioSource.clip = voiceClip;
         audioSource.loop = false;
         audioSource.Play();
+        if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+        {
+            StartCoroutine(NGIO.UnlockMedal(91499, OnMedalUnlocked));
+            //SteamAchievements.instance.UnlockAchievement("telephone");
+            answerTelephoneButton.gameObject.SetActive(false);
+        }
     }
 
     void HangUp()
@@ -80,7 +90,14 @@ public class TelephoneScript : MonoBehaviour
             string key = interactAction.action.GetBindingDisplayString();
             if (!callAnswered)
             {
-                messageText.text = "Press " + key + " to answer the phone.";
+                if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+                {
+                    messageText.text = "Press " + key + " to answer the phone.";
+                }
+                else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+                {
+                    answerTelephoneButton.gameObject.SetActive(true);
+                }
             }
         }
     }
@@ -92,6 +109,7 @@ public class TelephoneScript : MonoBehaviour
             playerNear = false;
             messageText.enabled = true;
             messageText.text = "";
+            answerTelephoneButton.gameObject.SetActive(false);
             if (callAnswered)
             {
                 HangUp();
@@ -99,8 +117,8 @@ public class TelephoneScript : MonoBehaviour
         }
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Telephone Unlocked!");
-     }*/
+     }
 }

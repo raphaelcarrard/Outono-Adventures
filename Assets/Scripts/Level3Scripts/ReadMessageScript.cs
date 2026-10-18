@@ -1,14 +1,19 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 public class ReadMessageScript : MonoBehaviour
 {
     public TextMeshProUGUI messageText;
+    public GameObject virtualControls;
     public InputActionReference interactAction;
     public PauseManager pm;
     public GameObject messageImage, objectiveText;
-    public MonoBehaviour thirdPersonScript, playerController, pauseManager;
+    public ThirdPersonCameraTwo thirdPersonScript;
+    public CameraFollow cameraFollow;
+    public MonoBehaviour playerController, pauseManager;
+    public Button readMessageButton;
 
     private bool playerNear = false;
 
@@ -29,6 +34,7 @@ public class ReadMessageScript : MonoBehaviour
     void Start()
     {
         messageText.text = "";
+        readMessageButton.gameObject.SetActive(false);
     }
 
     void Update()
@@ -37,11 +43,18 @@ public class ReadMessageScript : MonoBehaviour
         {
             CursorController.instance.ShowCursor();
             messageImage.SetActive(true);
-            //StartCoroutine(NGIO.UnlockMedal(91498, OnMedalUnlocked));
-            SteamAchievements.instance.UnlockAchievement("readMessage");
-            thirdPersonScript.enabled = false;
+            StartCoroutine(NGIO.UnlockMedal(91498, OnMedalUnlocked));
+            //SteamAchievements.instance.UnlockAchievement("readMessage");
+            if (PlayerPrefs.GetInt("CameraMode") == 0)
+            {
+                thirdPersonScript.enabled = false;
+            }
+            else if (PlayerPrefs.GetInt("CameraMode") == 1)
+            {
+                cameraFollow.enabled = false;
+            }
             playerController.enabled = false;
-	    pauseManager.enabled = false;
+	        pauseManager.enabled = false;
             messageText.enabled = false;
         }
     }
@@ -52,7 +65,14 @@ public class ReadMessageScript : MonoBehaviour
         {
             playerNear = true;
             string key = interactAction.action.GetBindingDisplayString();
-            messageText.text = "Press " + key + " to read the message.";
+            if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+            {
+                messageText.text = "Press " + key + " to read the message.";
+            }
+            else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+            {
+                readMessageButton.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -61,23 +81,60 @@ public class ReadMessageScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNear = false;
-            messageText.text = "";
+            if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+            {
+                messageText.text = "";
+            }
+            else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+            {
+                readMessageButton.gameObject.SetActive(false);
+            }
         }
+    }
+
+    public void ReadMessage()
+    {
+        CursorController.instance.ShowCursor();
+        messageImage.SetActive(true);
+        virtualControls.SetActive(false);
+        readMessageButton.gameObject.SetActive(false);
+        StartCoroutine(NGIO.UnlockMedal(91498, OnMedalUnlocked));
+        //SteamAchievements.instance.UnlockAchievement("readMessage");
+        if (PlayerPrefs.GetInt("CameraMode") == 0)
+        {
+            thirdPersonScript.enabled = false;
+        }
+        else if (PlayerPrefs.GetInt("CameraMode") == 1)
+        {
+            cameraFollow.enabled = false;
+        }
+        playerController.enabled = false;
+        pauseManager.enabled = false;
+        messageText.enabled = false;
     }
 
     public void CloseMessage()
     {
         CursorController.instance.HideCursor();
         messageImage.SetActive(false);
-        thirdPersonScript.enabled = true;
+        virtualControls.SetActive(true);
+        readMessageButton.gameObject.SetActive(true);
+        if (PlayerPrefs.GetInt("CameraMode") == 0)
+        {
+            thirdPersonScript.enabled = true;
+        }
+        else if (PlayerPrefs.GetInt("CameraMode") == 1)
+        {
+            cameraFollow.enabled = true;
+        }
         playerController.enabled = true;
         pauseManager.enabled = true;
-	messageText.enabled = true;
+	    messageText.enabled = true;
         objectiveText.SetActive(true);
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Read Message Unlocked!");
-     }*/
+     }
 }

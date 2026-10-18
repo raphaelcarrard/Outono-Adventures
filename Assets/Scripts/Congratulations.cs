@@ -8,8 +8,8 @@ public class Congratulations : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(NGIO.UnlockMedal(91507, OnMedalUnlocked));
-        SteamAchievements.instance.UnlockAchievement("gameCompleted");
+        StartCoroutine(NGIO.UnlockMedal(91507, OnMedalUnlocked));
+        //SteamAchievements.instance.UnlockAchievement("gameCompleted");
     }
 
     public void BackToMenu()
@@ -24,8 +24,8 @@ public class Congratulations : MonoBehaviour
         fader.FadeToScene(sceneToExitGame);
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Game Completed Unlocked!");
-     }*/
+     }
 }

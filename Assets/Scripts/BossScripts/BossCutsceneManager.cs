@@ -32,6 +32,7 @@ public class BossCutsceneManager : MonoBehaviour
     int currentLine;
     bool isTyping;
     Coroutine typingCoroutine;
+    public GameObject virtualControls;
 
     public void Start()
     {
@@ -45,6 +46,7 @@ public class BossCutsceneManager : MonoBehaviour
 
     IEnumerator CutsceneRoutine()
     {
+        virtualControls.SetActive(false);
         player.anim.SetFloat("Speed", 0);
         player.enabled = false;
         boss.fightStarted = false;
@@ -68,6 +70,7 @@ public class BossCutsceneManager : MonoBehaviour
         topRightBossLifes.SetActive(true);
         boss.fightStarted = true;
         player.enabled = true;
+        virtualControls.SetActive(true);
     }
 
     void ShowLine()

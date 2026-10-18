@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
@@ -9,11 +10,19 @@ public class MainMenu : MonoBehaviour
     public GameObject continuePanel, mainMenuButtons, optionsPanel, preferencesPanel, controlsPanel, creditsPanel, quitPanel, screenshotObject, insideOfCircusButton;
     public string sceneToLoadTheGame, sceneToExitGame, sceneToOutsideOfCircus, sceneToInsideOfCircus;
     public SceneFader fader;
+    public Button googlePlayAchievementsButton;
 
     void Awake()
     {
        instance = this;
        screenshotObject = GameObject.Find("Screenshot");
+    }
+
+    void Start()
+    {
+       #if !UNITY_ANDROID
+       googlePlayAchievementsButton.gameObject.SetActive(false);
+       #endif
     }
 
     public void StartGame()
@@ -88,8 +97,8 @@ public class MainMenu : MonoBehaviour
     public void AccessTheCredits()
     {
         creditsPanel.SetActive(true);
-        //StartCoroutine(NGIO.UnlockMedal(91493, OnMedalUnlocked));
-        SteamAchievements.instance.UnlockAchievement("credits");
+        StartCoroutine(NGIO.UnlockMedal(91493, OnMedalUnlocked));
+        //SteamAchievements.instance.UnlockAchievement("credits");
     }
 
     public void CloseTheCredits()
@@ -114,8 +123,8 @@ public class MainMenu : MonoBehaviour
         fader.FadeToScene(sceneToExitGame);
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Credits Unlocked!");
-     }*/
+     }
 }

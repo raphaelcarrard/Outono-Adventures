@@ -3,17 +3,23 @@ using UnityEngine;
 
 public class ExitGame : MonoBehaviour
 {
+    
+    public GameObject mobileDesktopExitText;
+    
     void Start()
     {
+        #if UNITY_WEBGL
+        mobileDesktopExitText.SetActive(false);
+        #endif
         StartCoroutine("timeToExitGame");
     }
 
     IEnumerator timeToExitGame()
     {
         #if UNITY_WEBGL
-        //StartCoroutine(NGIO.UnlockMedal(91494, OnMedalUnlocked));
+        StartCoroutine(NGIO.UnlockMedal(91494, OnMedalUnlocked));
         #endif
-        SteamAchievements.instance.UnlockAchievement("exitGame");
+        //SteamAchievements.instance.UnlockAchievement("exitGame");
         yield return new WaitForSeconds(5f);
         Debug.Log("Software Terminated");
         #if !UNITY_WEBGL
@@ -21,8 +27,8 @@ public class ExitGame : MonoBehaviour
         #endif
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Exit Game Unlocked!");
-     }*/
+     }
 }

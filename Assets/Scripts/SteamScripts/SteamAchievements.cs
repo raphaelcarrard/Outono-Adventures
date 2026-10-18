@@ -1,5 +1,5 @@
 using UnityEngine;
-using Steamworks;
+//using Steamworks;
 
 public class SteamAchievements : MonoBehaviour
 {
@@ -19,7 +19,7 @@ public class SteamAchievements : MonoBehaviour
         }
     }
 
-    public void UnlockAchievement(string id)
+    /*public void UnlockAchievement(string id)
     {
         if (!SteamManager.Initialized)
         {
@@ -27,5 +27,5 @@ public class SteamAchievements : MonoBehaviour
         }
         SteamUserStats.SetAchievement(id);
         SteamUserStats.StoreStats();
-    }
+    }*/
 }

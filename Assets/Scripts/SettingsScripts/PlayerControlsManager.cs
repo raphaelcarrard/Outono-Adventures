@@ -161,6 +161,17 @@ public partial class @PlayerControlsManager: IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": """",
+                    ""id"": ""82636bc8-d85f-43d8-b235-3ec5640974aa"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump/Double Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""dd29cc28-8e0a-426d-ad62-af0b3223457c"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -227,6 +238,17 @@ public partial class @PlayerControlsManager: IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": """",
+                    ""id"": ""feb50172-d613-4d73-a5dc-e3c0c0510c57"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""0bad6d12-c204-4586-b25f-27c3aa9cba7b"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -251,6 +273,17 @@ public partial class @PlayerControlsManager: IInputActionCollection2, IDisposabl
                     ""name"": """",
                     ""id"": ""fbba91ec-c528-47a5-a11e-61cbfa293a21"",
                     ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Kick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22464c62-2a9d-4615-808b-a00236b269cb"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

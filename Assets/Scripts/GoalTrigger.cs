@@ -10,14 +10,16 @@ public class GoalTrigger : MonoBehaviour
     public MonoBehaviour thirdPersonScript, playerController;
     public AudioSource audioSource;
     public AudioClip winSound;
+    public GameObject virtualControls;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball"))
         {
+             virtualControls.SetActive(false);
              messageText.text = "Level Complete!";
-             //StartCoroutine(NGIO.UnlockMedal(91502, OnMedalUnlocked));
-             SteamAchievements.instance.UnlockAchievement("level5");
+             StartCoroutine(NGIO.UnlockMedal(91502, OnMedalUnlocked));
+             //SteamAchievements.instance.UnlockAchievement("level5");
              thirdPersonScript.enabled = false;
              playerController.enabled = false;
              audioSource.PlayOneShot(winSound);
@@ -26,8 +28,8 @@ public class GoalTrigger : MonoBehaviour
         }
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Level 5 Unlocked!");
-     }*/
+     }
 }

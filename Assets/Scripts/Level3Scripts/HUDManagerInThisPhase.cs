@@ -7,7 +7,7 @@ public class HUDManagerInThisPhase : MonoBehaviour
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI messageText;
     public GameObject creepyImage;
-    public MonoBehaviour playerController, cameraController, pauseManager;
+    public MonoBehaviour playerController, pauseManager;
 
     void Update()
     {
@@ -17,7 +17,6 @@ public class HUDManagerInThisPhase : MonoBehaviour
         {
             creepyImage.SetActive(true);
             playerController.enabled = false;
-            cameraController.enabled = false;
             pauseManager.enabled = false;
         }
     }

@@ -10,6 +10,7 @@ public class KeyGoalInKartPhase : MonoBehaviour
     public MonoBehaviour kartController;
     public AudioSource audioSource, levelMusicSource;
     public AudioClip winSound;
+    public GameObject virtualControls;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class KeyGoalInKartPhase : MonoBehaviour
         fader = GameObject.Find("FadePanel").GetComponent<SceneFader>();
         kartController = GameObject.Find("Kart").GetComponent<MonoBehaviour>();
         levelMusicSource = GameObject.Find("LevelMusic").GetComponent<AudioSource>();
+        virtualControls = GameObject.Find("MobileControls");
     }
 
     void Update()
@@ -30,9 +32,16 @@ public class KeyGoalInKartPhase : MonoBehaviour
         {
             if (EnemyManager.instance.enemyCount == 0)
             {
+                if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+                {
+                    virtualControls.SetActive(false);
+                }
                 messageText.text = "Level Complete!";
-                //StartCoroutine(NGIO.UnlockMedal(91497, OnMedalUnlocked));
-                SteamAchievements.instance.UnlockAchievement("level2");
+                StartCoroutine(NGIO.UnlockMedal(91497, OnMedalUnlocked));
+                //SteamAchievements.instance.UnlockAchievement("level2");
+                #if UNITY_ANDROID
+                GooglePlayGamesManager.instance.CheckAchievements();
+                #endif
                 kartController.enabled = false;
                 levelMusicSource.Stop();
                 audioSource.PlayOneShot(winSound);
@@ -54,8 +63,8 @@ public class KeyGoalInKartPhase : MonoBehaviour
         }
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Level 2 Unlocked!");
-     }*/
+     }
 }

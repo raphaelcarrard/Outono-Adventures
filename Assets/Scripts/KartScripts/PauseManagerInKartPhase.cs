@@ -8,7 +8,9 @@ public class PauseManagerInKartPhase : MonoBehaviour
     public GameObject pausePanel;
     public string menuScene;
     public InputActionReference pauseAction;
-    public MonoBehaviour kartController, thirdPersonScript;
+    public ThirdPersonCameraTwo thirdPersonScript;
+    public CameraFollow cameraFollow;
+    public MonoBehaviour kartController;
     public bool isPaused = false;
 
     void OnEnable()
@@ -46,8 +48,15 @@ public class PauseManagerInKartPhase : MonoBehaviour
         {
            CursorController.instance.ShowCursor();
            kartController.enabled = false;
-           thirdPersonScript.enabled = false;
-           pausePanel.SetActive(true);
+            if (PlayerPrefs.GetInt("CameraMode") == 0)
+            {
+                thirdPersonScript.enabled = false;
+            }
+            else if (PlayerPrefs.GetInt("CameraMode") == 1)
+            {
+                cameraFollow.enabled = false;
+            }
+            pausePanel.SetActive(true);
            Time.timeScale = 0f;
            isPaused = true;
         }
@@ -59,7 +68,14 @@ public class PauseManagerInKartPhase : MonoBehaviour
         {
            CursorController.instance.HideCursor();
            kartController.enabled = true;
-           thirdPersonScript.enabled = true;
+            if (PlayerPrefs.GetInt("CameraMode") == 0)
+            {
+                thirdPersonScript.enabled = true;
+            }
+            else if (PlayerPrefs.GetInt("CameraMode") == 1)
+            {
+                cameraFollow.enabled = true;
+            }
            pausePanel.SetActive(false);
            Time.timeScale = 1f;
            isPaused = false;

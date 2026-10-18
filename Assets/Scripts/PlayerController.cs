@@ -102,6 +102,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Move(InputAction.CallbackContext value)
+    {
+        moveInput = value.ReadValue<Vector2>();
+    }
+
+    public void Jump(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            jumpPressed = true;
+        }
+        if (value.canceled)
+        {
+            jumpPressed = false;
+        }
+    }
+
+    public void KickBall(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            KickBall();
+        }
+    }
+
     void Move()
     {
         isGrounded = controller.isGrounded;
@@ -131,7 +156,7 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("Speed", move.magnitude);
     }
 
-    void Jump()
+    public void Jump()
     {
         if (jumpPressed && jumpCount < maxJumps)
         {

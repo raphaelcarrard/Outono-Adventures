@@ -74,7 +74,7 @@ public class KartController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = new Vector3(0, -0.5f, 0);
-	currentHealth = maxHealth;
+	    currentHealth = maxHealth;
     }
 
     void Update()
@@ -97,6 +97,38 @@ public class KartController : MonoBehaviour
            HandleBraking();
            UpdateWheels();
            LimitSpeed();
+        }
+    }
+
+    public void Steer(InputAction.CallbackContext value)
+    {
+        Vector2 input = controls.Player.Move.ReadValue<Vector2>();
+        steerInput = input.x;
+    }
+
+    public void Brake(InputAction.CallbackContext value)
+    {
+        isBraking = controls.Player.JumpDoubleJump.IsPressed();
+        if (value.performed)
+        {
+            isBraking = true;
+        }
+        if (value.canceled)
+        {
+            isBraking = false;
+        }
+    }
+
+    public void ThrowBallVB(InputAction.CallbackContext value)
+    {
+        throwBall = controls.Player.Kick.IsPressed();
+        if (value.performed)
+        {
+            throwBall = true;
+        }
+        if (value.canceled)
+        {
+            throwBall = false;
         }
     }
 

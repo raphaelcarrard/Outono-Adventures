@@ -7,8 +7,11 @@ public class PauseManagerForLevel4 : MonoBehaviour
     public GameObject pausePanel;
     public string menuScene;
     public InputActionReference pauseAction;
-    public MonoBehaviour carController, thirdPersonScript;
+    public ThirdPersonCameraTwo thirdPersonScript;
+    public CameraFollow cameraFollow;
+    public MonoBehaviour carController;
     public bool isPaused = false;
+    public GameObject virtualControls;
 
     void OnEnable()
     {
@@ -45,10 +48,18 @@ public class PauseManagerForLevel4 : MonoBehaviour
         {
            CursorController.instance.ShowCursor();
            carController.enabled = false;
-           thirdPersonScript.enabled = false;
-           pausePanel.SetActive(true);
-           Time.timeScale = 0f;
-           isPaused = true;
+            if (PlayerPrefs.GetInt("CameraMode") == 0)
+            {
+                thirdPersonScript.enabled = false;
+            }
+            else if (PlayerPrefs.GetInt("CameraMode") == 1)
+            {
+                cameraFollow.enabled = false;
+            }
+            virtualControls.SetActive(false);
+            pausePanel.SetActive(true);
+            Time.timeScale = 0f;
+            isPaused = true;
         }
     }
 
@@ -58,10 +69,18 @@ public class PauseManagerForLevel4 : MonoBehaviour
         {
            CursorController.instance.HideCursor();
            carController.enabled = true;
-           thirdPersonScript.enabled = true;
-           pausePanel.SetActive(false);
-           Time.timeScale = 1f;
-           isPaused = false;
+            if (PlayerPrefs.GetInt("CameraMode") == 0)
+            {
+                thirdPersonScript.enabled = true;
+            }
+            else if (PlayerPrefs.GetInt("CameraMode") == 1)
+            {
+                cameraFollow.enabled = true;
+            }
+            virtualControls.SetActive(true);
+            pausePanel.SetActive(false);
+            Time.timeScale = 1f;
+            isPaused = false;
         }
     }
 

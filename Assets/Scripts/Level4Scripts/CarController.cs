@@ -89,6 +89,25 @@ public class CarController : MonoBehaviour
         }
     }
 
+    public void Steer(InputAction.CallbackContext value)
+    {
+        Vector2 input = controls.Player.Move.ReadValue<Vector2>();
+        steerInput = input.x;
+    }
+
+    public void Brake(InputAction.CallbackContext value)
+    {
+        isBraking = controls.Player.JumpDoubleJump.IsPressed();
+        if (value.performed)
+        {
+            isBraking = true;
+        }
+        if (value.canceled)
+        {
+            isBraking = false;
+        }
+    }
+
     void HandleMotor()
     {
         rearLeftCollider.motorTorque = moveInput * motorTorque;

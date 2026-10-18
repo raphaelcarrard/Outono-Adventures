@@ -87,6 +87,23 @@ public class PlayerControllerLevel6 : MonoBehaviour
         ApplyGravity();
     }
 
+    public void MoveVB(InputAction.CallbackContext value)
+    {
+        moveInput = value.ReadValue<Vector2>();
+    }
+
+    public void ShootVB(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            shootPressed = true;
+        }
+        if (value.canceled)
+        {
+            shootPressed = false;
+        }
+    }
+
     void Move()
     {
         isGrounded = controller.isGrounded;

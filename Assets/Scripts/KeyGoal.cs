@@ -10,6 +10,7 @@ public class KeyGoal : MonoBehaviour
     public MonoBehaviour thirdPersonScript, playerController;
     public AudioSource audioSource, levelMusicSource;
     public AudioClip winSound;
+    public GameObject virtualControls;
 
     void Update()
     {
@@ -22,9 +23,10 @@ public class KeyGoal : MonoBehaviour
         {
             if (EnemyManager.instance.enemyCount == 0)
             {
+                virtualControls.SetActive(false);
                 messageText.text = "Level Complete!";
-                //StartCoroutine(NGIO.UnlockMedal(91496, OnMedalUnlocked));
-                SteamAchievements.instance.UnlockAchievement("level1");
+                StartCoroutine(NGIO.UnlockMedal(91496, OnMedalUnlocked));
+                //SteamAchievements.instance.UnlockAchievement("level1");
                 thirdPersonScript.enabled = false;
                 playerController.enabled = false;
                 levelMusicSource.Stop();
@@ -47,8 +49,8 @@ public class KeyGoal : MonoBehaviour
         }
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Level 1 Unlocked!");
-     }*/
+     }
 }

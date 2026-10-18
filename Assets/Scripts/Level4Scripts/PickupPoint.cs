@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 public class PickupPoint : MonoBehaviour
 {
     public TextMeshProUGUI messageText;
     public PauseManagerForLevel4 pm;
     public CarController player;
-
+    public Button startDeliveryButton;
     private bool playerNear = false;
     private PlayerControlsManager inputActions;
     private int reward;
@@ -34,6 +35,7 @@ public class PickupPoint : MonoBehaviour
     void Start()
     {
         messageText.text = "";
+        startDeliveryButton.gameObject.SetActive(false);
     }
 
     void Update()
@@ -46,10 +48,23 @@ public class PickupPoint : MonoBehaviour
         {
             return;
         }
-        if (!player.isDead && inputActions.Player.Interaction.WasPressedThisFrame() && !pm.isPaused)
+        if (playerNear && !player.isDead && inputActions.Player.Interaction.WasPressedThisFrame() && !pm.isPaused)
         {
             DeliveryManager.instance.StartDelivery(reward);
             gameObject.SetActive(false);
+            playerNear = false;
+            messageText.text = "";
+        }
+    }
+
+    public void StartDelivery()
+    {
+        if (playerNear && !player.isDead && !pm.isPaused)
+        {
+            DeliveryManager.instance.StartDelivery(reward);
+            gameObject.SetActive(false);
+            playerNear = false;
+            startDeliveryButton.gameObject.SetActive(false);
             messageText.text = "";
         }
     }
@@ -67,7 +82,15 @@ public class PickupPoint : MonoBehaviour
         playerNear = true;
         reward = DeliveryManager.instance.GenerateReward();
         string key = inputActions.Player.Interaction.GetBindingDisplayString();
-        messageText.text = "Press " + key + $" to start the delivery. Reward: ${reward}";
+        if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+        {
+            messageText.text = "Press " + key + $" to start the delivery. Reward: ${reward}";
+        }
+        else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+        {
+            startDeliveryButton.gameObject.SetActive(true);
+            messageText.text = $"Reward: ${reward}";
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -77,6 +100,14 @@ public class PickupPoint : MonoBehaviour
             return;
         }
         playerNear = false;
-        messageText.text = "";
+        if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+        {
+            messageText.text = "";
+        }
+        else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+        {
+            startDeliveryButton.gameObject.SetActive(false);
+            messageText.text = "";
+        }
     }
 }

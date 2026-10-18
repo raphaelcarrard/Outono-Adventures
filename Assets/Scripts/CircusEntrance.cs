@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using TMPro;
@@ -11,6 +12,7 @@ public class CircusEntrance : MonoBehaviour
     public SceneFader fader;
     public InputActionReference interactAction;
     public PauseManager pm;
+    public Button enterTheCircusButton;
 
     private bool playerNear = false;
 
@@ -32,17 +34,26 @@ public class CircusEntrance : MonoBehaviour
     {
         fader = FindObjectOfType<SceneFader>();
         circusEntranceText.text = "";
+        enterTheCircusButton.gameObject.SetActive(false);
     }
 
     void Update()
     {
         if (playerNear && interactAction.action.WasPressedThisFrame() && !pm.isPaused)
         {
-            //StartCoroutine(NGIO.UnlockMedal(91495, OnMedalUnlocked));
-            SteamAchievements.instance.UnlockAchievement("circusEntrance");
+            StartCoroutine(NGIO.UnlockMedal(91495, OnMedalUnlocked));
+            //SteamAchievements.instance.UnlockAchievement("circusEntrance");
             PlayerPrefs.SetInt("firsttimeincircus", 1);
             fader.FadeToScene(sceneToLoad);
         }
+    }
+
+    public void EnterTheCircus()
+    {
+        StartCoroutine(NGIO.UnlockMedal(91495, OnMedalUnlocked));
+        //SteamAchievements.instance.UnlockAchievement("circusEntrance");
+        PlayerPrefs.SetInt("firsttimeincircus", 1);
+        fader.FadeToScene(sceneToLoad);
     }
 
     void OnTriggerEnter(Collider other)
@@ -51,7 +62,14 @@ public class CircusEntrance : MonoBehaviour
         {
             playerNear = true;
             string key = interactAction.action.GetBindingDisplayString();
-            circusEntranceText.text = "Press " + key + " to enter the circus.";
+            if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+            {
+                circusEntranceText.text = "Press " + key + " to enter the circus.";
+            }
+            else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+            {
+                enterTheCircusButton.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -61,11 +79,12 @@ public class CircusEntrance : MonoBehaviour
         {
             playerNear = false;
             circusEntranceText.text = "";
+            enterTheCircusButton.gameObject.SetActive(false);
         }
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Enter of Circus Unlocked!");
-     }*/
+     }
 }

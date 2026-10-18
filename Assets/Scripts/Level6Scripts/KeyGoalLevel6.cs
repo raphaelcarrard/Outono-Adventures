@@ -9,6 +9,7 @@ public class KeyGoalLevel6 : MonoBehaviour
     public MonoBehaviour thirdPersonScript, playerController;
     public AudioSource audioSource, levelMusicSource;
     public AudioClip winSound;
+    public GameObject virtualControls;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class KeyGoalLevel6 : MonoBehaviour
         playerController = GameObject.Find("Player").GetComponent<MonoBehaviour>();
         thirdPersonScript = GameObject.Find("Main Camera").GetComponent<MonoBehaviour>();
         levelMusicSource = GameObject.Find("LevelMusic").GetComponent<AudioSource>();
+        virtualControls = GameObject.Find("MobileControls");
     }
 
     // Update is called once per frame
@@ -29,9 +31,16 @@ public class KeyGoalLevel6 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+            {
+                virtualControls.SetActive(false);
+            }
             messageText.text = "Level Complete!";
-            //StartCoroutine(NGIO.UnlockMedal(91503, OnMedalUnlocked));
-            SteamAchievements.instance.UnlockAchievement("level6");
+            StartCoroutine(NGIO.UnlockMedal(91503, OnMedalUnlocked));
+            //SteamAchievements.instance.UnlockAchievement("level6");
+            #if UNITY_ANDROID
+            GooglePlayGamesManager.instance.CheckAchievements();
+            #endif
             playerController.enabled = false;
             levelMusicSource.Stop();
             audioSource.PlayOneShot(winSound);
@@ -40,8 +49,8 @@ public class KeyGoalLevel6 : MonoBehaviour
         }
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Level 6 Unlocked!");
-     }*/
+     }
 }

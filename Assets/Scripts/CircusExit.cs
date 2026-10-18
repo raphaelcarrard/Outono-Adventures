@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using TMPro;
@@ -11,6 +12,8 @@ public class CircusExit : MonoBehaviour
     public SceneFader fader;
     public InputActionReference interactAction;
     public PauseManager pm;
+    public Button exitTheCircusButton;
+    public GameObject virtualButtons;
 
     private bool playerNear = false;
 
@@ -32,6 +35,7 @@ public class CircusExit : MonoBehaviour
     {
         fader = FindObjectOfType<SceneFader>();
         circusExitText.text = "";
+        exitTheCircusButton.gameObject.SetActive(false);
     }
 
     void Update()
@@ -42,13 +46,29 @@ public class CircusExit : MonoBehaviour
         }
     }
 
+    public void ExitTheCircus()
+    {
+        fader.FadeToScene(sceneToLoad);
+        if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+        {
+            virtualButtons.SetActive(false);
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerNear = true;
             string key = interactAction.action.GetBindingDisplayString();
-            circusExitText.text = "Press " + key + " to exit the circus.";
+            if (PlayerPrefs.GetInt("ShowVirtualControls") == 0)
+            {
+                circusExitText.text = "Press " + key + " to exit the circus.";
+            }
+            else if (PlayerPrefs.GetInt("ShowVirtualControls") == 1)
+            {
+                exitTheCircusButton.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -58,6 +78,7 @@ public class CircusExit : MonoBehaviour
         {
             playerNear = false;
             circusExitText.text = "";
+            exitTheCircusButton.gameObject.SetActive(false);
         }
     }
 }

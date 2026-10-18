@@ -9,14 +9,16 @@ public class Level7Goal : MonoBehaviour
     public MonoBehaviour thirdPersonScript, playerController;
     public AudioSource audioSource, levelMusicSource;
     public AudioClip winSound;
+    public GameObject virtualControls;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+           virtualControls.SetActive(false);
            messageText.text = "Level Complete!";
-           //StartCoroutine(NGIO.UnlockMedal(91504, OnMedalUnlocked));
-           SteamAchievements.instance.UnlockAchievement("level7");
+           StartCoroutine(NGIO.UnlockMedal(91504, OnMedalUnlocked));
+           //SteamAchievements.instance.UnlockAchievement("level7");
            thirdPersonScript.enabled = false;
            playerController.enabled = false;
            levelMusicSource.Stop();
@@ -26,8 +28,8 @@ public class Level7Goal : MonoBehaviour
         }
     }
 
-     /*public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
+     public void OnMedalUnlocked(NewgroundsIO.objects.Medal medal)
      {
          Debug.Log("Medal Level 7 Unlocked!");
-     }*/
+     }
 }
